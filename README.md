@@ -14,7 +14,7 @@ convert output stream to image file ppm, I used cmd, powershell, cmder all cool
 # C++ notes about file structures with cpp and h files
 #### I didnt touch cpp and needed a refresher on translation units & headers so I wrote this here for myself
 basic c++ notes about translation units (.cpp) & header files (.h/.hpp),  
-use #pragma once to include a header file only ONCE in a translation unit. ( USE PRAGMA IN TRANSLATION UNITS ALWAYS )   
+use #pragma once to include a header file only ONCE in a translation unit (DONT FORGET TO USE PRAGMA IN TRANSLATION UNITS! IMPORTANT!).  
 use header files only to hold declarations about certain information, example:  
 debug.h > should contain function declarations only related to debugging/console,  
 ```cpp
