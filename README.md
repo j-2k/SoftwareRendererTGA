@@ -12,15 +12,24 @@ convert output stream to image file ppm, I used cmd, powershell, cmder all cool
 ### 3. go to file of executable, image.ppm should be there, open ppm on imagemagic or photoeditor photoshop, gimp etc etc. no native support for ppm on windows.
 
 # C++ notes about file structures with cpp and h files
+#### I didnt touch cpp and needed a refresher on translation units & headers so I wrote this here for myself
 basic c++ notes about translation units (.cpp) & header files (.h/.hpp),  
-use #pragma once to include a header file only ONCE in a translation unit.
+use #pragma once to include a header file only ONCE in a translation unit. ( USE PRAGMA IN TRANSLATION UNITS ALWAYS )   
 use header files only to hold declarations about certain information, example:  
-Debug.h > should contain function declarations only related to debugging/console,  
-the only line in debug.h > void Debug(const char* msg);  
+debug.h > should contain function declarations only related to debugging/console,  
+```cpp
+//the only line inside debug.h
+void Debug(const char* msg);
+```
 use cpp files to implement the declarations in the header files like so:  
+```cpp
+//the only line inside debug.cpp
+#pragma once
+#include "debug.h"
 void Debug(const char* msg) {return msg}  
-in your main to use this function do #include "Debug.h" (quotes for files relative to the current file and angled brackets only for compiler include paths)
+```
+in your main to use this function do #include "debug.h" (quotes for files relative to the current file and angled brackets only for compiler include paths)
 
-
+# first ppm image
 converted image4ppm to png:  
 ![uvimage](images/image4convertedfromppmtopng.png)
