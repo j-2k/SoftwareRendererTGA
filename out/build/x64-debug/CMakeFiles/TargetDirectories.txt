@@ -1,5 +1,0 @@
-C:/Users/juma1/source/repos/JumaGFX_CMake/out/build/x64-debug/CMakeFiles/edit_cache.dir
-C:/Users/juma1/source/repos/JumaGFX_CMake/out/build/x64-debug/CMakeFiles/rebuild_cache.dir
-C:/Users/juma1/source/repos/JumaGFX_CMake/out/build/x64-debug/JumaGFX_CMake/CMakeFiles/JumaGFX_CMake.dir
-C:/Users/juma1/source/repos/JumaGFX_CMake/out/build/x64-debug/JumaGFX_CMake/CMakeFiles/edit_cache.dir
-C:/Users/juma1/source/repos/JumaGFX_CMake/out/build/x64-debug/JumaGFX_CMake/CMakeFiles/rebuild_cache.dir
