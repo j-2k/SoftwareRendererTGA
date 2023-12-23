@@ -41,4 +41,4 @@ int main()
 ```
 # first ppm image
 converted image4ppm to png:  
-![uvimage](images/image4convertedfromppmtopng.png)
+![uvimage](cpp2ppm_CMake/images/image4convertedfromppmtopng.png)
