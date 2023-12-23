@@ -11,6 +11,15 @@ build the new changes
 convert output stream to image file ppm, I used cmd, powershell, cmder all cool     
 ### 3. go to file of executable, image.ppm should be there, open ppm on imagemagic or photoeditor photoshop, gimp etc etc. no native support for ppm on windows.
 
+# C++ notes about file structures with cpp and h files
+basic c++ notes about translation units (.cpp) & header files (.h/.hpp),  
+use #pragma once to include a header file only ONCE in a translation unit.
+use header files only to hold declarations about certain information, example:  
+Debug.h > should contain function declarations only related to debugging/console,  
+the only line in debug.h > void Debug(const char* msg);  
+use cpp files to implement the declarations in the header files like so:  
+void Debug(const char* msg) {return msg}  
+in your main to use this function do #include "Debug.h" (quotes for files relative to the current file and angled brackets only for compiler include paths)
 
 
 converted image4ppm to png:  
