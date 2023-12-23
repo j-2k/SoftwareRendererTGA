@@ -29,7 +29,16 @@ use cpp files to implement the declarations in the header files like so:
 void Debug(const char* msg) {return msg}  
 ```
 in your main to use this function do #include "debug.h" (quotes for files relative to the current file and angled brackets only for compiler include paths)
-
+```cpp
+//somewhere in main
+#pragma once
+#include "debug.h"
+#include <iostream>
+int main()
+{
+  Debug("Hello")
+}
+```
 # first ppm image
 converted image4ppm to png:  
 ![uvimage](images/image4convertedfromppmtopng.png)
