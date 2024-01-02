@@ -10,6 +10,49 @@ to get a image from cpp code in ppm format,
 ## Prerequisites
 - CMake (version 3.12 or higher)
 - A C++ compiler that supports C++20
+## Building
+### 1. clone the project
+```zsh
+git clone https://github.com/j-2k/ImagePPM.git
+```
+### 2. go to the "out" directory
+```zsh
+#ex > assuming ur in imagePPM master folder, 
+cd cpp2ppm_CMake/out/
+```
+### 3. make an empty build folder in out 
+```zsh
+#build is already taken & not empty, so build ur
+#own proj files with in a different build folder/name
+mkdir build2
+cd build2
+```
+### 4. generate the build files
+```zsh
+#cmake .. goes into the parent directory to find CMAKELISTS.text file
+#to generate build files
+cmake ..
+```
+### 5. build the project
+```zsh
+#do make or cmake --build .
+make
+#or
+cmake --build .
+```
+### 6. Run the project & output stream to ppm
+```zsh
+path/to/jumagfx_cmake.exe > image.ppm
+```
+
+
+
+
+<details>
+  <summary> Old personal build notes</summary>
+building is the mostly? the same in all os but im just writing some stuff I learned/did along the way  
+maybe just the compiler setting is different between os (msvc) & the build systems(make ninja nmake visualstudio etc)? but idk much about that.
+  
 ## Windows
 Build the project with redirecting the standard output stream to a image file (ppm in this case & using CMake, ps I have no idea how to use CMake, so I'm guna learn that before I continue)  
 ### 1. cmake --build build
@@ -25,7 +68,7 @@ example > in out/build/mac folder is empty, when inside that dir in terminal do 
 exmaple > inside mac should be build folders do make or cmake --build . to build project & gen a exe file
 ### 3. locate jumagfx_cmake.exe and run the command "path/to/jumagfx_cmake.exe > image.ppm" to generate a ppm image in the current directory.
 example > "cpp2ppm_CMake/out/build/mac/JumaGFX_CMake/JumaGFX_CMake > image.ppm"
-
+</details>
 
 
 
