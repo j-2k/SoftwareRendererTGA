@@ -5,12 +5,26 @@ I used VS22, and chose a cmake as a base project. Will try to do proper build in
 I'm not sure what workflow I should use but cmake makes me want to use VSC and not VS, but ill just write some stuff for how to make this garbage work, since this took me an hour to figure out.  
 to get a image from cpp code in ppm format,  
 
+*this build instructions writing from me is garbage, im going to later copy what other good people write for build instructions, im just writing this for myself*
+
+## Windows
 Build the project with redirecting the standard output stream to a image file (ppm in this case & using CMake, ps I have no idea how to use CMake, so I'm guna learn that before I continue)  
 ### 1. cmake --build build
 build the new changes   
 ### 2. your/directory/of/executable.exe > image.ppm   
 convert output stream to image file ppm, I used cmd, powershell, cmder all cool     
 ### 3. go to file of executable, image.ppm should be there, open ppm on imagemagic or photoeditor photoshop, gimp etc etc. no native support to open ppm images on windows, however MAC actually lets you open & see PPM images.
+## MacOS
+Building proj on mac
+### 1. enter a empty build folder and run "cmake (PATH TO CMAKELISTS.txt)/." to generate build files
+example > in out/build/mac folder is empty, when inside that dir in terminal do "cmake ../../../."
+### 2. do "make" or "cmake --build ." to build the project
+exmaple > inside mac should be build folders do make or cmake --build . to build project & gen a exe file
+### 3. locate jumagfx_cmake.exe and run the command "path/to/jumagfx_cmake.exe > image.ppm" to generate a ppm image in the current directory.
+example > "cpp2ppm_CMake/out/build/mac/JumaGFX_CMake/JumaGFX_CMake > image.ppm"
+
+
+
 
 # C++ notes about file structures with cpp and h files
 #### I didnt touch cpp and needed a refresher on translation units & headers so I wrote this here for myself
