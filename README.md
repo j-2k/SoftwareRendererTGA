@@ -1,5 +1,6 @@
 # ImagePPM
 Testing how to get a ppm image from cpp, work flow is awful on windows with cmake but whatever.  
+I used VS22, and chose a cmake as a base project. Will try to do proper build instructions later, I will try building to both mac & windows.
 
 I'm not sure what workflow I should use but cmake makes me want to use VSC and not VS, but ill just write some stuff for how to make this garbage work, since this took me an hour to figure out.  
 to get a image from cpp code in ppm format,  
@@ -9,7 +10,7 @@ Build the project with redirecting the standard output stream to a image file (p
 build the new changes   
 ### 2. your/directory/of/executable.exe > image.ppm   
 convert output stream to image file ppm, I used cmd, powershell, cmder all cool     
-### 3. go to file of executable, image.ppm should be there, open ppm on imagemagic or photoeditor photoshop, gimp etc etc. no native support for ppm on windows.
+### 3. go to file of executable, image.ppm should be there, open ppm on imagemagic or photoeditor photoshop, gimp etc etc. no native support to open ppm images on windows, however MAC actually lets you open & see PPM images.
 
 # C++ notes about file structures with cpp and h files
 #### I didnt touch cpp and needed a refresher on translation units & headers so I wrote this here for myself
