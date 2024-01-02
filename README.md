@@ -42,7 +42,8 @@ cmake --build .
 ```
 ### 6. Run the project & output stream to ppm
 ```zsh
-path/to/jumagfx_cmake.exe > image.ppm
+#find the path to the exe (file path/to/directory/with/exe)/jumagfx_cmake.exe > image.ppm
+./jumagfx_cmake.exe > image.ppm
 ```
 
 
