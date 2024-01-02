@@ -7,6 +7,9 @@ to get a image from cpp code in ppm format,
 
 *this build instructions writing from me is garbage, im going to later copy what other good people write for build instructions, im just writing this for myself*
 
+## Prerequisites
+- CMake (version 3.12 or higher)
+- A C++ compiler that supports C++20
 ## Windows
 Build the project with redirecting the standard output stream to a image file (ppm in this case & using CMake, ps I have no idea how to use CMake, so I'm guna learn that before I continue)  
 ### 1. cmake --build build
