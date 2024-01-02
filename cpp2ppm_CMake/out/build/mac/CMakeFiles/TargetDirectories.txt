@@ -1,0 +1,5 @@
+/Users/dsg342/Desktop/ImagePPM/cpp2ppm_cmake/out/build/mac/CMakeFiles/edit_cache.dir
+/Users/dsg342/Desktop/ImagePPM/cpp2ppm_cmake/out/build/mac/CMakeFiles/rebuild_cache.dir
+/Users/dsg342/Desktop/ImagePPM/cpp2ppm_cmake/out/build/mac/JumaGFX_CMake/CMakeFiles/JumaGFX_CMake.dir
+/Users/dsg342/Desktop/ImagePPM/cpp2ppm_cmake/out/build/mac/JumaGFX_CMake/CMakeFiles/edit_cache.dir
+/Users/dsg342/Desktop/ImagePPM/cpp2ppm_cmake/out/build/mac/JumaGFX_CMake/CMakeFiles/rebuild_cache.dir
