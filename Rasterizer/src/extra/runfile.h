@@ -1,1 +1,1 @@
-void FileRunIndex();
+void FileRunIndex(int argc, char** argv);
