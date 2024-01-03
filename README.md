@@ -81,7 +81,7 @@ example > "cpp2ppm_CMake/out/build/mac/JumaGFX_CMake/JumaGFX_CMake > image.ppm"
 basic c++ notes about translation units (.cpp) & header files (.h/.hpp),  
 use #pragma once to include a header file only ONCE in a translation unit (DONT FORGET TO USE PRAGMA IN H FILES! IMPORTANT!).  
 an example of duplicate definitions without pragma:  
-assume car.h, engine.h, & main.cpp if main.cpp contains both h files & calls them, with car having to print "car" and engine printing "engine". then if main will give "car" & "engine" printed but if the car h file includes engine without pragma you will get a duplicate engine and car if that makes sense. So use pragma once in both h files just for sake of guarding against this issue.  
+assume car.h, engine.h, & main.cpp if main.cpp contains both h files & calls them, with car having to print "car" and engine printing "engine". then main will give "car" & "engine" printed but if the car h file includes engine h without pragma you will get 2 engine prints and 1 car print if that makes sense. So use pragma once in both h files just for sake of guarding against this issue.  
 use header files only to hold declarations about certain information, example:  
 debug.h > should contain function declarations only related to debugging/console,  
 ```cpp
