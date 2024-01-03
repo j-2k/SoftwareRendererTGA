@@ -43,7 +43,10 @@ cmake --build .
 ### 6. Run the project & output stream to ppm
 ```zsh
 #find the path to the exe (file path/to/directory/with/exe)/jumagfx_cmake.exe > image.ppm
+#incase you didnt put the exe in some other place this should just work
 ./jumagfx_cmake.exe > image.ppm
+# the "." will search the current dir & run the exe file remove .exe if on terminal
+./jumagfx_cmake > image.ppm
 ```
 
 
@@ -76,17 +79,19 @@ example > "cpp2ppm_CMake/out/build/mac/JumaGFX_CMake/JumaGFX_CMake > image.ppm"
 # C++ notes about file structures with cpp and h files
 #### I didnt touch cpp and needed a refresher on translation units & headers so I wrote this here for myself
 basic c++ notes about translation units (.cpp) & header files (.h/.hpp),  
-use #pragma once to include a header file only ONCE in a translation unit (DONT FORGET TO USE PRAGMA IN TRANSLATION UNITS! IMPORTANT!).  
+use #pragma once to include a header file only ONCE in a translation unit (DONT FORGET TO USE PRAGMA IN H FILES! IMPORTANT!).  
+an example of duplicate definitions without pragma:  
+assume car.h, engine.h, & main.cpp if main.cpp contains both h files & calls them, with car having to print "car" and engine printing "engine". then if main will give "car" & "engine" printed but if the car h file includes engine without pragma you will get a duplicate engine and car if that makes sense. So use pragma once in both h files just for sake of guarding against this issue.  
 use header files only to hold declarations about certain information, example:  
 debug.h > should contain function declarations only related to debugging/console,  
 ```cpp
-//the only line inside debug.h
+//inside debug.h
+#pragma once
 void Debug(const char* msg);
 ```
 use cpp files to implement the declarations in the header files like so:  
 ```cpp
 //the only line inside debug.cpp
-#pragma once
 #include "debug.h"
 void Debug(const char* msg) {return msg}  
 ```
