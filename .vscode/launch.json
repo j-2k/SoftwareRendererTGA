@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/dsg342/Desktop/ImagePPM/cpp2ppm_CMake/out/build/mac/CMakeFiles/3.28.1/CompilerIdCXX",
+      "program": "/Users/dsg342/Desktop/ImagePPM/cpp2ppm_CMake/out/build/mac/CMakeFiles/3.28.1/CompilerIdCXX/build/Debug/outDebug"
+    }
+  ]
+}
