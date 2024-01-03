@@ -98,7 +98,6 @@ void Debug(const char* msg) {return msg}
 in your main to use this function do #include "debug.h" (quotes for files relative to the current file and angled brackets only for compiler include paths)
 ```cpp
 //somewhere in main
-#pragma once
 #include "debug.h"
 #include <iostream>
 int main()
