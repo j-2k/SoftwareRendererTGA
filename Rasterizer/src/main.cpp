@@ -71,7 +71,8 @@ int main(int argc, char** argv)
 	//line2p(20, 13, 40, 80, image, red); 
 	//line2p(90, 50, 23, 30, image, green);
 	
-	model = new Model("../obj/african_head.obj");
+	//model = new Model("../obj/african_head.obj");
+	model = new Model("../obj/jumaranger.obj");
 	for (int i=0; i<model->nfaces(); i++) { 
     std::vector<int> face = model->face(i); 
     for (int j=0; j<3; j++) { 
@@ -85,8 +86,8 @@ int main(int argc, char** argv)
 		
 		const TGAColor color = TGAColor(rand()%255, rand()%255, rand()%255, 255);
         line2p(x0, y0, x1, y1, image, color); 
-    } 
-}
+		} 
+	}
 
 	image.flip_vertically(); // i want to have the origin at the left bottom corner of the image
 	std::string rstr = std::to_string(run);

@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/dsg342/Desktop/ImagePPM/Rasterizer",
-      "program": "/Users/dsg342/Desktop/ImagePPM/Rasterizer/build/Debug/outDebug"
+      "cwd": "/Users/dsg342/Desktop/ImagePPM/Rasterizer/src",
+      "program": "/Users/dsg342/Desktop/ImagePPM/Rasterizer/src/build/Debug/outDebug"
     }
   ]
 }
