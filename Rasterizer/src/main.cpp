@@ -72,7 +72,7 @@ int main(int argc, char** argv)
 	//line2p(90, 50, 23, 30, image, green);
 	
 	//model = new Model("../obj/african_head.obj");
-	model = new Model("../obj/jumaranger.obj");
+	model = new Model("../obj/duoranger.obj");
 	for (int i=0; i<model->nfaces(); i++) { 
     std::vector<int> face = model->face(i); 
     for (int j=0; j<3; j++) { 
