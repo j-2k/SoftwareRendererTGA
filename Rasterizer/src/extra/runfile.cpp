@@ -22,7 +22,7 @@ int ArgHandler(int argc, char** argv)
 		exit(0);}
 }
 
-void FileRunIndex(int argc, char** argv)
+int FileRunIndex(int argc, char** argv)
 {
     int num = ArgHandler(argc, argv);
     //starting with important vars
@@ -59,4 +59,5 @@ void FileRunIndex(int argc, char** argv)
     std::ofstream WriteRunIndexFile("RunIndex.txt");
     WriteRunIndexFile << runAmount;
     WriteRunIndexFile.close();
+    return runAmount;
 }
