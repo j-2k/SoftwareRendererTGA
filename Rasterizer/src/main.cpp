@@ -5,6 +5,7 @@
 #include "geometry.h"
 #include "model.h"
 #include <vector>
+#include <string>
 
 const TGAColor white = TGAColor(255, 255, 255, 255);
 const TGAColor red   = TGAColor(255, 0,   0,   255);
