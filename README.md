@@ -1,3 +1,14 @@
+# Showcase Images
+***Note: All important project information is after the images section!***
+## Stage 1 Bresenham's line Algorithm
+
+## Stage 2 Wireframe Rendering
+![quakewirefr](https://github.com/j-2k/ImagePPM/assets/52252068/f08e0dfe-5763-414a-b97f-b1c1d26c95ce)
+![render1](https://github.com/j-2k/ImagePPM/assets/52252068/51ddfa12-b44a-4e64-b8d1-03f0e73fbe6b)
+![Untitled-2](https://github.com/j-2k/ImagePPM/assets/52252068/24be2bd9-eec7-4f21-b87e-4963a82f53b8)
+
+
+
 # ImagePPM
 Testing how to get a ppm image from cpp, work flow is awful on windows with cmake but whatever.  
 I used VS22, and chose a cmake as a base project. Will try to do proper build instructions later, I will try building to both mac & windows.
