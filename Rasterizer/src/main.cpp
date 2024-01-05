@@ -73,7 +73,7 @@ int main(int argc, char** argv)
 	//line2p(90, 50, 23, 30, image, green);
 	
 	//model = new Model("../obj/african_head.obj");
-	model = new Model("../obj/duoranger.obj");
+	model = new Model("../../models/duoranger.obj");
 	for (int i=0; i<model->nfaces(); i++) { 
     std::vector<int> face = model->face(i); 
     for (int j=0; j<3; j++) { 
@@ -92,7 +92,7 @@ int main(int argc, char** argv)
 
 	image.flip_vertically(); // i want to have the origin at the left bottom corner of the image
 	std::string rstr = std::to_string(run);
-	std::string output = "../images/output" + rstr + ".tga";
+	std::string output = "../../images/output" + rstr + ".tga";
 
 	image.write_tga_file(output.c_str());
 	delete model;

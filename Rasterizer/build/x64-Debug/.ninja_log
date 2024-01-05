@@ -1,0 +1,15 @@
+# ninja log v5
+48	667	7261596651884780	CMakeFiles/Rasterizer.dir/src/tgaimage.cpp.obj	2f919a39477587b9
+44	679	7261596652014435	CMakeFiles/Rasterizer.dir/src/model.cpp.obj	b12904e3caea4829
+38	670	7261596651894756	CMakeFiles/Rasterizer.dir/src/extra/runfile.cpp.obj	bebbfc798eb31aad
+26	844	7261622877582710	CMakeFiles/Rasterizer.dir/src/main.cpp.obj	9b14f3063b507b6d
+845	1079	7261622879487611	Rasterizer.exe	f8e9db8298ef18f9
+11	32	0	C:/Users/juma1/OneDrive/Desktop/ImagePPM/Rasterizer/build/x64-Debug/CMakeFiles/cmake.verify_globs	78260fe0d616b1
+43	676	7261635010669742	CMakeFiles/Rasterizer.dir/src/tgaimage.cpp.obj	2f919a39477587b9
+36	678	7261635010510165	CMakeFiles/Rasterizer.dir/src/main.cpp.obj	9b14f3063b507b6d
+34	679	7261635010659767	CMakeFiles/Rasterizer.dir/src/extra/runfile.cpp.obj	bebbfc798eb31aad
+39	697	7261635010939025	CMakeFiles/Rasterizer.dir/src/model.cpp.obj	b12904e3caea4829
+697	972	7261635012913733	Rasterizer.exe	f8e9db8298ef18f9
+13	36	0	C:/Users/juma1/OneDrive/Desktop/ImagePPM/Rasterizer/build/x64-Debug/CMakeFiles/cmake.verify_globs	78260fe0d616b1
+37	582	7261636039488186	CMakeFiles/Rasterizer.dir/src/main.cpp.obj	9b14f3063b507b6d
+582	768	7261636040934318	Rasterizer.exe	f8e9db8298ef18f9
