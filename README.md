@@ -1,6 +1,9 @@
 # Showcase Images
 ***Note: All important project information is after the images section!***
 
+## Stage 0 Render TGA Image
+![uvimage](cpp2ppm_CMake/images/image4convertedfromppmtopng.png)
+
 ## Stage 1 Bresenham's line Algorithm
 <img src="https://github.com/j-2k/ImagePPM/assets/52252068/945a6815-6874-4052-a663-5d4f9e0ebaea">
 
