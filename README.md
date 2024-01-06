@@ -1,6 +1,8 @@
 # Showcase Images
 ***Note: All important project information is after the images section!***
+
 ## Stage 1 Bresenham's line Algorithm
+<img src="https://github.com/j-2k/ImagePPM/assets/52252068/945a6815-6874-4052-a663-5d4f9e0ebaea">
 
 ## Stage 2 Wireframe Rendering
 ![quakewirefr](https://github.com/j-2k/ImagePPM/assets/52252068/f08e0dfe-5763-414a-b97f-b1c1d26c95ce)
