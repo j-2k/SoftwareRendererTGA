@@ -18,7 +18,7 @@ Model *model = NULL;
 const int width  = 200;
 const int height = 200;
 
-//bresenham line algorithm
+//Bresenham Line Algorithm
 void line2p(int x1,int y1, int x2, int y2, TGAImage &image, TGAColor color)
 {
 	bool steep = false;
@@ -57,7 +57,7 @@ void line2p(int x1,int y1, int x2, int y2, TGAImage &image, TGAColor color)
 		
 	}
 }
-
+//Bresenham Line Algorithm Overload with Vec2i
 void line2p(Vec2i p0, Vec2i p1, TGAImage &image, TGAColor color) {
     bool steep = false;
     if (std::abs(p0.x-p1.x)<std::abs(p0.y-p1.y)) {
@@ -80,11 +80,17 @@ void line2p(Vec2i p0, Vec2i p1, TGAImage &image, TGAColor color) {
     }
 }
 
-//Triangle
-void triangle(Vec2i t0, Vec2i t1, Vec2i t2, TGAImage &image, TGAColor color) {
-    line2p(t0, t1, image, color);
-    line2p(t1, t2, image, color);
-    line2p(t2, t0, image, color);
+//Triangle Method
+void triangle(Vec2i p0, Vec2i p1, Vec2i p2, TGAImage &image, TGAColor color) {
+    //Sort all 3 points from Y axis top to down
+	if(p0.y > p1.y) std::swap(p0,p1);
+	if(p0.y > p2.y) std::swap(p0,p2);
+	if(p1.y > p2.y) std::swap(p1,p2);
+	
+	
+	line2p(p0, p1, image, yellow);
+    line2p(p1, p2, image, yellow);
+    line2p(p2, p0, image, purple);
 }
 
 int main(int argc, char** argv)
@@ -126,13 +132,13 @@ int main(int argc, char** argv)
 	*/
 	
 	/*Triangle Rendering*/
-    Vec2i t0[3] = {Vec2i(50, 20),   Vec2i(100, 10),  Vec2i(20, 80)};
-    Vec2i t1[3] = {Vec2i(150, 50),  Vec2i(20, 50),   Vec2i(10, 10)};
-    Vec2i t2[3] = {Vec2i(199, 199), Vec2i(120, 160), Vec2i(5, 180)};
+	Vec2i t0[3] = {Vec2i(10, 70),   Vec2i(50, 160),  Vec2i(70, 80)}; 
+	Vec2i t1[3] = {Vec2i(180, 50),  Vec2i(150, 1),   Vec2i(70, 180)}; 
+	Vec2i t2[3] = {Vec2i(180, 150), Vec2i(120, 160), Vec2i(130, 180)}; 
 
-    triangle(t0[0], t0[1], t0[2], image, purple);
-    triangle(t1[0], t1[1], t1[2], image, blue);
-    triangle(t2[0], t2[1], t2[2], image, yellow);
+    triangle(t0[0], t0[1], t0[2], image, yellow);
+    triangle(t1[0], t1[1], t1[2], image, yellow);
+    triangle(t2[0], t2[1], t2[2], image, purple);
 
 
 	image.flip_vertically(); // i want to have the origin at the left bottom corner of the image
