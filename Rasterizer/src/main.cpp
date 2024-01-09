@@ -1,11 +1,4 @@
-#include <iostream>
-#include "tgaimage.h"
-#include "extra/runfile.h"
-#include <cmath>
-#include "geometry.h"
-#include "model.h"
-#include <vector>
-#include <string>
+#include "precompiledheaders.h"
 
 const TGAColor white = TGAColor(255, 255, 255, 255);
 const TGAColor red   = TGAColor(255, 0,   0,   255);
@@ -17,81 +10,6 @@ const TGAColor purple = TGAColor(255, 0, 255, 255);
 Model *model = NULL;
 const int width  = 200;
 const int height = 200;
-
-//Bresenham Line Algorithm
-void line2p(int x1,int y1, int x2, int y2, TGAImage &image, TGAColor color)
-{
-	bool steep = false;
-	if(std::abs(x1-x2) < std::abs(y1-y2)){
-		std::swap(x1,y1);
-		std::swap(x2,y2);
-		steep = true;
-	}
-	
-	if(x1>x2){				// || y1 > y2){
-		std::swap(x1,x2);
-		std::swap(y1,y2);
-	}
-
-	int dx = x2 - x1;
-	int dy = y2 - y1;
-
-	int derror2 = std::abs(dy)*2;
-	float error2 = 0;
-
-	int y = y1;
-	
-	for (int px = x1; px <= x2; px++){
-		float mag = (float)(px - x1) / (float)(x2 - x1);
-		int py = (y1*(1.-mag)) + (y2*mag);
-		if(steep)
-			{image.set(py,px,color);} //if steep (transposed) then return to normal
-		else
-			{image.set(px,py,color);} //normal
-
-		error2 += derror2;
-		if (error2 > dx){
-			y += (y2>y1 ? 1:-1);
-			error2 -= dx*2;
-		}
-		
-	}
-}
-//Bresenham Line Algorithm Overload with Vec2i
-void line2p(Vec2i p0, Vec2i p1, TGAImage &image, TGAColor color) {
-    bool steep = false;
-    if (std::abs(p0.x-p1.x)<std::abs(p0.y-p1.y)) {
-        std::swap(p0.x, p0.y);
-        std::swap(p1.x, p1.y);
-        steep = true;
-    }
-    if (p0.x>p1.x) {
-        std::swap(p0, p1);
-    }
-
-    for (int x=p0.x; x<=p1.x; x++) {
-        float t = (x-p0.x)/(float)(p1.x-p0.x);
-        int y = p0.y*(1.-t) + p1.y*t;
-        if (steep) {
-            image.set(y, x, color);
-        } else {
-            image.set(x, y, color);
-        }
-    }
-}
-
-//Triangle Method
-void triangle(Vec2i p0, Vec2i p1, Vec2i p2, TGAImage &image, TGAColor color) {
-    //Sort all 3 points from Y axis top to down
-	if(p0.y > p1.y) std::swap(p0,p1);
-	if(p0.y > p2.y) std::swap(p0,p2);
-	if(p1.y > p2.y) std::swap(p1,p2);
-	
-	
-	line2p(p0, p1, image, yellow);
-    line2p(p1, p2, image, yellow);
-    line2p(p2, p0, image, purple);
-}
 
 int main(int argc, char** argv)
 {
@@ -141,7 +59,7 @@ int main(int argc, char** argv)
     triangle(t2[0], t2[1], t2[2], image, purple);
 
 
-	image.flip_vertically(); // i want to have the origin at the left bottom corner of the image
+	image.flip_vertically(); //origin at the left bottom corner of the image
 	std::string rstr = std::to_string(run);
 	std::string output = "../../images/output" + rstr + ".tga";
 
