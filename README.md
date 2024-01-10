@@ -65,8 +65,32 @@ cmake --build .
 ./jumagfx_cmake > image.ppm
 ```
 
+## Debug Mode Guide
+Getting debug to work on vsc was a slight pain, so im going to document it real quick so I dont ever have to remember how to do it again on vsc.
 
+I will talk about the Cmake Debugger because idk how to use other ones they personally gave me too many issues.  
+Firstly, The Cmake Debugger WILL NOT USE THE LAUNCH.json CONFIGURATIONS! It will use settings.json NOT the .vs settings.json but rather the cmakes settings.json file. You can find this file through the cmake extension tools for vscode. See below:  
 
+First navigate to the CMake Tools Extension for VScode then > Set the important garbage up such as:  
+1. Build Directory & Args commands if you have any  
+2. Cmake Path (command to find cmake path = "whereis cmake")  
+3. Go to > Cmake Options Advanced then under it turn on the status bar visibility to visibile!  
+![Screenshot 2024-01-10 at 9 42 19 AM](https://github.com/j-2k/ImagePPM/assets/52252068/fe5eb0f1-fd81-4e89-b5c5-f31a1f2f0ce0)
+After enabling the status bar to visible you should see the below options, but before continuing, first open the settings.json shown above.
+![Screenshot 2024-01-10 at 9 28 17 AM](https://github.com/j-2k/ImagePPM/assets/52252068/92193a2f-eaf2-425b-bc21-874dfcabfe9c)
+In the settings.json paste the below to use lldb debug config for mac, other mi modes for other operating systems.
+```json
+    "cmake.debugConfig": {
+        "MIMode": "lldb"
+    },
+```
+Now set the cmake status bar to the correct options like debug & set the build target and etc then run by pressing the bug option on the status bar & it should work!  
+
+![Screenshot 2024-01-10 at 9 52 53 AM](https://github.com/j-2k/ImagePPM/assets/52252068/e3297368-c3a3-4f92-ba38-f69d8542019f)
+
+Its a little weird in the sense sometimes it just skips my breakpoints?? maybe its because i forgot to build but idk it acts weird sometimes.  
+But make sure the status bar says debug mode, then build the files set the exe and target then press the bug icon & should run debug mode.  
+Thats all!
 
 <details>
   <summary> Old personal build notes</summary>
