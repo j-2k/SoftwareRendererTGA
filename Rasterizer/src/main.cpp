@@ -58,7 +58,6 @@ int main(int argc, char** argv)
     triangle(t1[0], t1[1], t1[2], image, yellow);
     triangle(t2[0], t2[1], t2[2], image, purple);
 
-
 	image.flip_vertically(); //origin at the left bottom corner of the image
 	std::string rstr = std::to_string(run);
 	std::string output = "../../images/output" + rstr + ".tga";

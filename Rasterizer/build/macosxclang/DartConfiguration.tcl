@@ -5,7 +5,7 @@
 
 # Configuration directories and files
 SourceDirectory: /Users/dsg342/Desktop/ImagePPM/Rasterizer
-BuildDirectory: /Users/dsg342/Desktop/ImagePPM/Rasterizer/build/macosxclang
+BuildDirectory: /Users/dsg342/Desktop/ImagePPM/rasterizer/build/macosxclang
 
 # Where to place the cost data store
 CostDataFile: 
