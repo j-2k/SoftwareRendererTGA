@@ -1,4 +1,11 @@
-# Showcase Images
+# About this Project
+This project contains 2 things, a ppm image generator which is the minor project, & the major project which is the software rasterizer. Go down below to learn more about each project. These projects were done for learning purposes, credits & learning resources might be in here or in my graphics roadmap repository.  
+
+Software Rasterizer was learned through SSloy's TinyRenderer Wiki on github direct link > https://github.com/ssloy/tinyrenderer/wiki
+
+# Software Rasterizer Project
+
+### Showcase Images
 ***Note: All important project information is after the images section!***
 
 ## Stage 0 Render TGA Image
@@ -12,9 +19,19 @@
 ![render1](https://github.com/j-2k/ImagePPM/assets/52252068/51ddfa12-b44a-4e64-b8d1-03f0e73fbe6b)
 ![Untitled-2](https://github.com/j-2k/ImagePPM/assets/52252068/24be2bd9-eec7-4f21-b87e-4963a82f53b8)
 
+## Rasterizer Project Personal Notes
+#### All topics covered are below with bold stages being extremely important to understand
+(this is mainly done for myself to remember the important stages for rendering):  
+1. Hello World Image - Generate a TGA Image
+2. UV Image - Color the TGA Image
+3. ***Bresenham's Line Algorithim - Line Generation Stage***
+4. Wireframe Rendering - Connect the lines with the verticies on a obj file
+5. Old Line Sweep Algorithim - Triangle Rasterization Stage (Slow)
+6. ***Barycentric Coordinates - Triangle Rasterization Stage***
+7.
 
 
-# ImagePPM
+# CPP2PPM Project
 Testing how to get a ppm image from cpp, work flow is awful on windows with cmake but whatever.  
 I used VS22, and chose a cmake as a base project. Will try to do proper build instructions later, I will try building to both mac & windows.
 

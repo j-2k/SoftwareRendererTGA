@@ -130,3 +130,10 @@ void triangle(Vec2i p0, Vec2i p1, Vec2i p2, TGAImage &image, TGAColor color) {
     line2p(p2, p0, image, purple);
 	*/
 }
+
+Vec3f barycentric(Vec2i *pts, Vec2i P);
+{
+	//cross product of 2 tris
+	//Vec3f cx =
+}
+
