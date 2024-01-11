@@ -7,13 +7,19 @@ void line2p(int x1,int y1, int x2, int y2, TGAImage &image, TGAColor color);
 //Bresenham Line Algorithm Overload with Vec2i
 void line2p(Vec2i p0, Vec2i p1, TGAImage &image, TGAColor color);
 
-//Triangle Method
-void triangle(Vec2i p0, Vec2i p1, Vec2i p2, TGAImage &image, TGAColor color);
+//Triangle Method using Line Sweep
+void LineSweepTriangle(Vec2i p0, Vec2i p1, Vec2i p2, TGAImage &image, TGAColor color);
 
-//Barycentric Coordinates
-//Watch these https://www.youtube.com/watch?v=ngoZZkMuCOM by Brendan Galea, https://www.youtube.com/watch?v=HYAgJN3x4GA by Sebastian Lague
+//Triangle Method using Barycentric Coordinates
+void BaryTriangle(Vec2i *pts, TGAImage &image, TGAColor color);
+
+//Barycentric Coordinates, If you care its kinda important you understand the math behind this, since I didn't fully understand ssloy's explanation I will put resources below.
+//Barycentric Coordinates Vulkan, https://www.youtube.com/watch?v=ngoZZkMuCOM by Brendan Galea, 
+//Find a point in a triangle, https://www.youtube.com/watch?v=HYAgJN3x4GA by Sebastian Lague
+//Pure Math only on Barycentric Coordinates, https://www.youtube.com/playlist?list=PLtOnbOq_QGQghqF9N5ntauCdSG5IhCR6v Playlist by Essentials of Math
+//Intro To CG, University Lecture covering Barycentric Coordinates & other topics, https://www.youtube.com/watch?v=B8Q1nqW3XcE by Justin Solomon
 Vec3f barycentric(Vec2i *pts, Vec2i P);
-/* AI explanation of barycentric coordinates
+/* AI explanation of barycentric coordinates, see implementation in cpp file
 This function calculates the barycentric coordinates of a point P with respect to a triangle defined by points pts[0], pts[1], and pts[2].
 Here's a breakdown of the code:
 Vec3f u = Vec3f(pts[2][0]-pts[0][0], pts[1][0]-pts[0][0], pts[0][0]-P[0])^Vec3f(pts[2][1]-pts[0][1], pts[1][1]-pts[0][1], pts[0][1]-P[1]);

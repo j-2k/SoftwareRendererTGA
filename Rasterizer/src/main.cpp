@@ -49,14 +49,20 @@ int main(int argc, char** argv)
 	}
 	*/
 	
-	/*Triangle Rendering*/
+	/*Triangle Rendering Old
 	Vec2i t0[3] = {Vec2i(10, 70),   Vec2i(50, 160),  Vec2i(70, 80)}; 
 	Vec2i t1[3] = {Vec2i(180, 50),  Vec2i(150, 1),   Vec2i(70, 180)}; 
 	Vec2i t2[3] = {Vec2i(180, 150), Vec2i(120, 160), Vec2i(130, 180)}; 
 
-    triangle(t0[0], t0[1], t0[2], image, yellow);
-    triangle(t1[0], t1[1], t1[2], image, yellow);
-    triangle(t2[0], t2[1], t2[2], image, purple);
+    LineSweepTriangle(t0[0], t0[1], t0[2], image, yellow);
+    LineSweepTriangle(t1[0], t1[1], t1[2], image, yellow);
+    LineSweepTriangle(t2[0], t2[1], t2[2], image, purple);
+	*/
+
+	/*Triangle Rendering Using Barycentric Coordinates*/
+	Vec2i triangle[3] = {Vec2i(50,50),   Vec2i(150, 50),  Vec2i(150, 150)};
+	
+	BaryTriangle(triangle, image, yellow);
 
 	image.flip_vertically(); //origin at the left bottom corner of the image
 	std::string rstr = std::to_string(run);
