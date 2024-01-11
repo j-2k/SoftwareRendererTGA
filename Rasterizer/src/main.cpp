@@ -7,6 +7,9 @@ const TGAColor blue  = TGAColor(0,   0,   255, 255);
 const TGAColor yellow = TGAColor(255, 255, 0, 255);
 const TGAColor purple = TGAColor(255, 0, 255, 255);
 
+const Vec3f light_direction(1,-1,-1); //Vec3f(-1,-1,-1);
+
+
 Model *model = NULL;
 const int width  = 1000;
 const int height = 1000;
@@ -53,13 +56,33 @@ int main(int argc, char** argv)
 	for (int i=0; i<model->nfaces(); i++) { 
     std::vector<int> face = model->face(i); 
 	Vec2i screen_coords[3]; 
+	Vec3f world_coords[3];
 		for (int j=0; j<3; j++) { 
-			Vec3f world_coords = model->vert(face[j]);
-			screen_coords[j] = Vec2i((world_coords.x+1.)*width/2., (world_coords.y+1.)*height/2.); 
-		} 
+			//Read the 3 verticies world cords from a face
+			Vec3f world_coords_v = model->vert(face[j]);
+			//(width & height /2) are used to center the image according to the resolution set
+			screen_coords[j] = Vec2i((world_coords_v.x+1.) * width/2., (world_coords_v.y+1.) * height/2.); 
+			//Vec2i above is just xy no z coords we have no depth buffer yet, thats why some faces are clipping this is just screen space.
+			world_coords[j] = world_coords_v;
+		}
 
-		TGAColor c = TGAColor(255,20,255, 255);
-		BaryTriangle(screen_coords,image,c);
+		//in order to do lighting we need a normal vector ofc, to get this normal vector we need to do a cross product of 2 vectors on each face (the triangle)
+		Vec3f normal = (world_coords[2]-world_coords[0])^(world_coords[1]-world_coords[0]);
+		//ORDER OF CROSS PRODUCT MATTERS, if you get a negative normal vector then you need to swap the order of the cross product
+		normal.normalize();
+
+
+		
+		//Classic Lighting method using Dot Product of the normal vector & the light direction vector
+		float lightIntensity = normal*light_direction;
+
+		//https://twitter.com/FreyaHolmer/status/1200807790580768768?lang=en dot product visualization by Freya Holmer
+		//If the dot product is negative that means the 2 vectors angles are greater than 90 degrees apart else if they are less than 90 degrees apart then the dot product is positive & recieves light
+		if(lightIntensity > 0)
+		{
+			TGAColor lightCol = TGAColor(lightIntensity*255,lightIntensity*255,lightIntensity*255, 255);
+			BaryTriangle(screen_coords,image,lightCol);
+		}
 	}
 	
 	/*Triangle Rendering Old
