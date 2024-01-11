@@ -11,15 +11,15 @@ const Vec3f light_direction(1,-1,-1); //Vec3f(-1,-1,-1);
 
 
 Model *model = NULL;
-const int width  = 1000;
-const int height = 1000;
+const int width  = 800;
+const int height = 500;
 
 int main(int argc, char** argv)
 {
 	//terminal to run > "cmake .. && make && ./rasterizer" in 1 command
     int run = FileRunIndex(argc, argv);//ignore this is garbage mainly done for testing & learning some stuff
 	
-    TGAImage image(width, height, TGAImage::RGB);
+    TGAImage image(width, 32, TGAImage::RGB);
 
 	/* UV RENDERING
 	for (size_t x = 0; x < width; x++)
@@ -52,7 +52,7 @@ int main(int argc, char** argv)
 	}
 	*/
 
-	/*Obj Triangle Rendering*/
+	/*Obj Triangle Rendering
 	for (int i=0; i<model->nfaces(); i++) { 
     std::vector<int> face = model->face(i); 
 	Vec2i screen_coords[3]; 
@@ -83,7 +83,7 @@ int main(int argc, char** argv)
 			TGAColor lightCol = TGAColor(lightIntensity*255,lightIntensity*255,lightIntensity*255, 255);
 			BaryTriangle(screen_coords,image,lightCol);
 		}
-	}
+	}*/
 	
 	/*Triangle Rendering Old
 	Vec2i t0[3] = {Vec2i(10, 70),   Vec2i(50, 160),  Vec2i(70, 80)}; 
@@ -99,6 +99,32 @@ int main(int argc, char** argv)
 	Vec2i triangle[3] = {Vec2i(50,50),   Vec2i(150, 50),  Vec2i(150, 150)};
 	BaryTriangle(triangle, image, yellow);
 	*/
+
+	/*2D Mesh Scene Test to Understand Painter's Algorithim & the problems associated with it*/
+	//https://github.com/ssloy/tinyrenderer/wiki/Lesson-3:-Hidden-faces-removal-(z-buffer) see original 2D/3D images here
+	
+	int yBuffer[width];
+	for(int i = 0; i < width; i++)
+	{	
+		//initializes the whole array block to the negative min value which is probably -2147483648 or negative inf
+		yBuffer[i] = std::numeric_limits<int>::min();
+	}
+
+	rasterYbuffer(Vec2i(20, 34),   Vec2i(744, 400), image, red,   yBuffer);
+    rasterYbuffer(Vec2i(120, 434), Vec2i(444, 400), image, green, yBuffer);
+	rasterYbuffer(Vec2i(330, 463), Vec2i(594, 200), image, blue,  yBuffer);
+
+	/*
+	// scene "2d mesh"
+    line2p(Vec2i(20, 34),   Vec2i(744, 400), image, red);
+    line2p(Vec2i(120, 434), Vec2i(444, 400), image, green);
+    line2p(Vec2i(330, 463), Vec2i(594, 200), image, blue);
+
+    // screen line
+    line2p(Vec2i(10, 10), Vec2i(790, 10), image, white);
+	*/
+
+	
 
 
 	image.flip_vertically(); //origin at the left bottom corner of the image

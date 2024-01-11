@@ -37,3 +37,5 @@ In barycentric coordinates, a point inside a triangle can be represented as a we
 The weights (or coordinates) always sum to 1, and each one ranges from 0 to 1. If a weight is 0, the point lies on the opposite side of the corresponding vertex.
 If a weight is 1, the point coincides with that vertex.
 */
+
+void rasterYbuffer(Vec2i p0, Vec2i p1, TGAImage &image, TGAColor color, int ybuffer[]);

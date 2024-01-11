@@ -176,3 +176,32 @@ Vec3f barycentric(Vec2i *pts, Vec2i P)
 	return Vec3f(1.f-(cx.x+cx.y)/cx.z, cx.y/cx.z, cx.x/cx.z);
 }
 
+void rasterYbuffer(Vec2i p0, Vec2i p1, TGAImage &image, TGAColor color, int ybuffer[]) {
+    if (p0.x>p1.x) {
+        std::swap(p0, p1);
+    }
+
+    for (int x=p0.x; x<=p1.x; x++) {
+        float t = (x-p0.x)/(float)(p1.x-p0.x);	//x "forward lerp stepper", literally lerp if t is 0 return p0 if t is 1 return p1, anything in between, it will linearly interpolate over p0 to p1
+        int y = p0.y*(1.-t) + p1.y*t;			//get the y value at the current x position by lerping between p0 & p1
+        if (ybuffer[x]<y) {						//replace the buffer value with the new y value if the new y value is greater than the current y value in the buffer
+			ybuffer[x] = y;
+			
+			//screen
+			for (size_t i = 0; i < image.get_height(); i++)//image.get_height()/2
+			{
+				image.set(x, i, color);
+			}
+
+			//ybuffer
+			/*
+			for (size_t i = 0; i < image.get_height()/2; i++)
+			{
+				float m = ybuffer[x]/x;
+				image.set(x, i, TGAColor(m*255,m*255,m*255,255));
+			}*/
+			
+			std::cout << ybuffer[x] << std::endl;
+        }
+    }
+}
