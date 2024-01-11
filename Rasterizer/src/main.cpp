@@ -8,8 +8,8 @@ const TGAColor yellow = TGAColor(255, 255, 0, 255);
 const TGAColor purple = TGAColor(255, 0, 255, 255);
 
 Model *model = NULL;
-const int width  = 200;
-const int height = 200;
+const int width  = 1000;
+const int height = 1000;
 
 int main(int argc, char** argv)
 {
@@ -32,7 +32,7 @@ int main(int argc, char** argv)
 	*/
 
 	model = new Model("../../models/duoranger.obj");
-	/* Wireframe Rendering
+	/* Obj Wireframe Rendering Lines Old
 	for (int i=0; i<model->nfaces(); i++) { 
     std::vector<int> face = model->face(i); 
     for (int j=0; j<3; j++) { 
@@ -48,6 +48,19 @@ int main(int argc, char** argv)
 		} 
 	}
 	*/
+
+	/*Obj Triangle Rendering*/
+	for (int i=0; i<model->nfaces(); i++) { 
+    std::vector<int> face = model->face(i); 
+	Vec2i screen_coords[3]; 
+		for (int j=0; j<3; j++) { 
+			Vec3f world_coords = model->vert(face[j]);
+			screen_coords[j] = Vec2i((world_coords.x+1.)*width/2., (world_coords.y+1.)*height/2.); 
+		} 
+
+		TGAColor c = TGAColor(255,20,255, 255);
+		BaryTriangle(screen_coords,image,c);
+	}
 	
 	/*Triangle Rendering Old
 	Vec2i t0[3] = {Vec2i(10, 70),   Vec2i(50, 160),  Vec2i(70, 80)}; 
@@ -59,10 +72,11 @@ int main(int argc, char** argv)
     LineSweepTriangle(t2[0], t2[1], t2[2], image, purple);
 	*/
 
-	/*Triangle Rendering Using Barycentric Coordinates*/
+	/*Triangle Rendering Using Barycentric Coordinates
 	Vec2i triangle[3] = {Vec2i(50,50),   Vec2i(150, 50),  Vec2i(150, 150)};
-	
 	BaryTriangle(triangle, image, yellow);
+	*/
+
 
 	image.flip_vertically(); //origin at the left bottom corner of the image
 	std::string rstr = std::to_string(run);

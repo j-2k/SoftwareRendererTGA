@@ -155,7 +155,7 @@ void BaryTriangle(Vec2i *pts, TGAImage &image, TGAColor color) {
 			//If the point in the bounding box resides in the triangle then color it
             Vec3f bc_screen  = barycentric(pts, P); 
             if (bc_screen.x<0 || bc_screen.y<0 || bc_screen.z<0) continue; 
-			//TGAColor color = TGAColor(rand() % 256, rand() % 256, rand() % 256, 255); //random colors
+			//TGAColor color = TGAColor(rand() % 255, rand() % 255, rand() % 255, 255); //random colors
             image.set(P.x, P.y, color); 
         } 
     } 
