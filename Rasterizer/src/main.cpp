@@ -7,7 +7,7 @@ const TGAColor blue  = TGAColor(0,   0,   255, 255);
 const TGAColor yellow = TGAColor(255, 255, 0, 255);
 const TGAColor purple = TGAColor(255, 0, 255, 255);
 
-const Vec3f light_direction(1,-1,-1); //Vec3f(-1,-1,-1);
+const Vec3f light_direction(0,0,-1); //Vec3f(-1,-1,-1);
 
 
 Model *model = NULL;
@@ -34,7 +34,7 @@ int main(int argc, char** argv)
 	}
 	*/
 
-	model = new Model("../../models/duoranger.obj");
+	model = new Model("../../models/african_head.obj");
 	/* Obj Wireframe Rendering Lines Old
 	for (int i=0; i<model->nfaces(); i++) { 
     std::vector<int> face = model->face(i); 
@@ -52,7 +52,7 @@ int main(int argc, char** argv)
 	}
 	*/
 
-	/*Obj Triangle Rendering
+	/*Obj Triangle Rendering NO DEPTH BUFFER
 	for (int i=0; i<model->nfaces(); i++) { 
     std::vector<int> face = model->face(i); 
 	Vec2i screen_coords[3]; 
@@ -125,16 +125,25 @@ int main(int argc, char** argv)
 	*/
 
 	
-	/*Z Buffer implementation*/
+	/*Z Buffer implementation WITH Obj Triangle Rendering & Lighting */
 	float *zbuffer = new float[width*height];
     for (int i=width*height; i--; zbuffer[i] = -std::numeric_limits<float>::max());
 
     for (int i=0; i<model->nfaces(); i++) {
         std::vector<int> face = model->face(i);
         Vec3f pts[3];
-        for (int i=0; i<3; i++) pts[i] = world2screen(model->vert(face[i]), width, height);
-        triangle(pts, zbuffer, image, TGAColor(rand()%255, rand()%255, rand()%255, 255));
+		Vec3f world_coords[3];
+        for (int i=0; i<3; i++){
+			pts[i] = world2screen(model->vert(face[i]), width, height);
+			world_coords[i] = (model->vert(face[i]));
+		}
+		//Vec3f normal = cross((world_coords[2]-world_coords[0]),(world_coords[1]-world_coords[0]));
+		//normal.normalize();
+		//float lightIntensity = normal*light_direction;
+
+		triangle(pts, zbuffer, image, TGAColor(rand()%255, rand()%255, rand()%255, 255));
     }
+	
 
 
 	image.flip_vertically(); //origin at the left bottom corner of the image
