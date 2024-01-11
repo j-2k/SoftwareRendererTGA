@@ -11,15 +11,15 @@ const Vec3f light_direction(1,-1,-1); //Vec3f(-1,-1,-1);
 
 
 Model *model = NULL;
-const int width  = 800;
-const int height = 500;
+const int width  = 1000;
+const int height = 1000;
 
 int main(int argc, char** argv)
 {
 	//terminal to run > "cmake .. && make && ./rasterizer" in 1 command
     int run = FileRunIndex(argc, argv);//ignore this is garbage mainly done for testing & learning some stuff
 	
-    TGAImage image(width, 32, TGAImage::RGB);
+    TGAImage image(width, height, TGAImage::RGB);
 
 	/* UV RENDERING
 	for (size_t x = 0; x < width; x++)
@@ -100,7 +100,7 @@ int main(int argc, char** argv)
 	BaryTriangle(triangle, image, yellow);
 	*/
 
-	/*2D Mesh Scene Test to Understand Painter's Algorithim & the problems associated with it*/
+	/*2D Mesh Scene Test to Understand Depth Buffer
 	//https://github.com/ssloy/tinyrenderer/wiki/Lesson-3:-Hidden-faces-removal-(z-buffer) see original 2D/3D images here
 	
 	int yBuffer[width];
@@ -114,7 +114,7 @@ int main(int argc, char** argv)
     rasterYbuffer(Vec2i(120, 434), Vec2i(444, 400), image, green, yBuffer);
 	rasterYbuffer(Vec2i(330, 463), Vec2i(594, 200), image, blue,  yBuffer);
 
-	/*
+	
 	// scene "2d mesh"
     line2p(Vec2i(20, 34),   Vec2i(744, 400), image, red);
     line2p(Vec2i(120, 434), Vec2i(444, 400), image, green);
@@ -125,6 +125,16 @@ int main(int argc, char** argv)
 	*/
 
 	
+	/*Z Buffer implementation*/
+	float *zbuffer = new float[width*height];
+    for (int i=width*height; i--; zbuffer[i] = -std::numeric_limits<float>::max());
+
+    for (int i=0; i<model->nfaces(); i++) {
+        std::vector<int> face = model->face(i);
+        Vec3f pts[3];
+        for (int i=0; i<3; i++) pts[i] = world2screen(model->vert(face[i]), width, height);
+        triangle(pts, zbuffer, image, TGAColor(rand()%255, rand()%255, rand()%255, 255));
+    }
 
 
 	image.flip_vertically(); //origin at the left bottom corner of the image
