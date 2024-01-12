@@ -137,11 +137,12 @@ int main(int argc, char** argv)
 			pts[i] = world2screen(model->vert(face[i]), width, height);
 			world_coords[i] = (model->vert(face[i]));
 		}
-		//Vec3f normal = cross((world_coords[2]-world_coords[0]),(world_coords[1]-world_coords[0]));
-		//normal.normalize();
-		//float lightIntensity = normal*light_direction;
-
-		triangle(pts, zbuffer, image, TGAColor(rand()%255, rand()%255, rand()%255, 255));
+		Vec3f normal = cross((world_coords[2]-world_coords[0]),(world_coords[1]-world_coords[0]));
+		normal.normalize();
+		float lightIntensity = normal*light_direction;
+		
+		triangle(pts, zbuffer, image, TGAColor(lightIntensity * 255.f, lightIntensity * 255.f, lightIntensity *255.f, 255));
+		//triangle(pts, zbuffer, image, TGAColor(rand()%255, rand()%255, rand()%255, 255));
     }
 	
 

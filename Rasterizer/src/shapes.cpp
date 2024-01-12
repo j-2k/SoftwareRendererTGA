@@ -190,6 +190,7 @@ void BaryTriangle(Vec2i *pts, TGAImage &image, TGAColor color) {
 } */
 
 void triangle(Vec3f *pts, float *zbuffer, TGAImage &image, TGAColor color) {
+	//FINDING THE BOUNDING BOX OF THE TRIANGLE
     Vec2f bboxmin( std::numeric_limits<float>::max(),  std::numeric_limits<float>::max());
     Vec2f bboxmax(-std::numeric_limits<float>::max(), -std::numeric_limits<float>::max());
     Vec2f clamp(image.get_width()-1, image.get_height()-1);
@@ -199,17 +200,27 @@ void triangle(Vec3f *pts, float *zbuffer, TGAImage &image, TGAColor color) {
             bboxmax[j] = std::min(clamp[j], std::max(bboxmax[j], pts[i][j]));
         }
     }
+
+	//LOOP THROUGH THE BOUNDING BOX CONTAINING THE TRIANGLE
     Vec3f P;
-    for (P.x=bboxmin.x; P.x<=bboxmax.x; P.x++) {
-        for (P.y=bboxmin.y; P.y<=bboxmax.y; P.y++) {
+    for (P.x=bboxmin.x; P.x <= bboxmax.x; P.x++) {
+        for (P.y=bboxmin.y; P.y <= bboxmax.y; P.y++) {
+
             Vec3f bc_screen  = barycentric3D(pts[0], pts[1], pts[2], P);
-            if (bc_screen.x<0 || bc_screen.y<0 || bc_screen.z<0) continue;
+            if (bc_screen.x<0 || bc_screen.y<0 || bc_screen.z<0) continue;//if the point is outside the triangle then skip it
+
+
             P.z = 0;
-            for (int i=0; i<3; i++) P.z += pts[i][2]*bc_screen[i];
-            if (zbuffer[int(P.x+P.y*image.get_width())]<P.z) {
-                zbuffer[int(P.x+P.y*image.get_width())] = P.z;
-                image.set(P.x, P.y, color);
-            }
+            for (int i=0; i<3; i++) {
+				P.z += pts[i][2] *bc_screen[i];
+				//bc_screen[i] is the weight of the vertex
+				//pts[i][2] is the z value of the vertex
+			}
+
+			if (zbuffer[int(P.x+P.y*image.get_width())] < P.z) {
+				zbuffer[int(P.x+P.y*image.get_width())] = P.z;
+				image.set(P.x, P.y, color);//P.z stores depth
+			}
         }
     }
 }
