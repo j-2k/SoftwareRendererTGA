@@ -8,11 +8,9 @@ Software Rasterizer was learned through SSloy's TinyRenderer Wiki on github dire
 ### Showcase Images
 ***Note: All important project information is after the images section!***
 
-## Stage 0 Render TGA Image
-![output50](https://github.com/j-2k/ImagePPM/assets/52252068/1421eaaa-2436-4a7a-be05-c65eae1ce64e)
-
-## Stage 1 Bresenham's line Algorithm
-<img src="https://github.com/j-2k/ImagePPM/assets/52252068/945a6815-6874-4052-a663-5d4f9e0ebaea">
+## Stage 0.5 Render TGA Image & Stage 1.0 Bresenham's line Algorithm
+<img src="https://github.com/j-2k/ImagePPM/assets/52252068/1421eaaa-2436-4a7a-be05-c65eae1ce64e" width="49%">
+<img src="https://github.com/j-2k/ImagePPM/assets/52252068/945a6815-6874-4052-a663-5d4f9e0ebaea"width="49%">
 
 ## Stage 2 Wireframe Rendering
 ![quakewirefr](https://github.com/j-2k/ImagePPM/assets/52252068/f08e0dfe-5763-414a-b97f-b1c1d26c95ce)
@@ -21,10 +19,16 @@ Software Rasterizer was learned through SSloy's TinyRenderer Wiki on github dire
 
 ## Stage 3 Triangle Rasterization
 First 3 Using Line Sweep, Last using Barycentric Coordinates & Bounding Box Check  
-<img width="24.5%" src="https://github.com/j-2k/ImagePPM/assets/52252068/07dca414-5cf1-4188-8f51-66a5d3bb704f">
-<img width="24.5%" src="https://github.com/j-2k/ImagePPM/assets/52252068/4c779704-74c2-4438-8baf-d311d57ca3a5">
-<img width="24.5%" src="https://github.com/j-2k/ImagePPM/assets/52252068/4fc9e524-d643-4aea-8a05-f5da14bd91ca">
-<img width="24.5%" src="https://github.com/j-2k/ImagePPM/assets/52252068/03583538-e93c-4d72-9812-2acdb32c0c23">
+<img width="24.4%" src="https://github.com/j-2k/ImagePPM/assets/52252068/07dca414-5cf1-4188-8f51-66a5d3bb704f">
+<img width="24.4%" src="https://github.com/j-2k/ImagePPM/assets/52252068/4c779704-74c2-4438-8baf-d311d57ca3a5">
+<img width="24.4%" src="https://github.com/j-2k/ImagePPM/assets/52252068/4fc9e524-d643-4aea-8a05-f5da14bd91ca">
+<img width="24.4%" src="https://github.com/j-2k/ImagePPM/assets/52252068/03583538-e93c-4d72-9812-2acdb32c0c23">
+
+## Stage 4 Model Triangle Rasterization & Lighting
+
+## Stage 5 Depth Buffer
+
+## Stage 6 
 
 ## Rasterizer Project Personal Notes
 #### All topics covered are below with bold stages being extremely important to understand
