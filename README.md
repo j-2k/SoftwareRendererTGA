@@ -19,6 +19,13 @@ Software Rasterizer was learned through SSloy's TinyRenderer Wiki on github dire
 ![render1](https://github.com/j-2k/ImagePPM/assets/52252068/51ddfa12-b44a-4e64-b8d1-03f0e73fbe6b)
 ![Untitled-2](https://github.com/j-2k/ImagePPM/assets/52252068/24be2bd9-eec7-4f21-b87e-4963a82f53b8)
 
+## Stage 3 Triangle Rasterization
+First 3 Using Line Sweep, Last using Barycentric Coordinates & Bounding Box Check
+<img width="24.5%" src="https://github.com/j-2k/ImagePPM/assets/52252068/07dca414-5cf1-4188-8f51-66a5d3bb704f">
+<img width="24.5%" src="https://github.com/j-2k/ImagePPM/assets/52252068/4c779704-74c2-4438-8baf-d311d57ca3a5">
+<img width="24.5%" src="https://github.com/j-2k/ImagePPM/assets/52252068/4fc9e524-d643-4aea-8a05-f5da14bd91ca">
+<img width="24.5%" src="https://github.com/j-2k/ImagePPM/assets/52252068/03583538-e93c-4d72-9812-2acdb32c0c23">
+
 ## Rasterizer Project Personal Notes
 #### All topics covered are below with bold stages being extremely important to understand
 (this is mainly done for myself to remember the important stages for rendering):  
