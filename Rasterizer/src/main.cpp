@@ -7,7 +7,7 @@ const TGAColor blue  = TGAColor(0,   0,   255, 255);
 const TGAColor yellow = TGAColor(255, 255, 0, 255);
 const TGAColor purple = TGAColor(255, 0, 255, 255);
 
-const Vec3f light_direction(0,0,-1); //Vec3f(-1,-1,-1);
+const Vec3f light_direction(1,-1,-1); //Vec3f(-1,-1,-1);
 
 
 Model *model = NULL;
@@ -139,7 +139,9 @@ int main(int argc, char** argv)
 		}
 		Vec3f normal = cross((world_coords[2]-world_coords[0]),(world_coords[1]-world_coords[0]));
 		normal.normalize();
-		int lightIntensity = (int)clampminmax(((normal*light_direction) * 255.f),0.f,255.f);
+		Vec3f lightDir = light_direction;
+		lightDir.normalize();
+		int lightIntensity = (int)clampminmax(((normal*lightDir) * 255.f),0.f,255.f);
 		triangle(pts, zbuffer, image, TGAColor(lightIntensity, lightIntensity, lightIntensity, 255));
 		//triangle(pts, zbuffer, image, TGAColor(rand()%255, rand()%255, rand()%255, 255));
     }
