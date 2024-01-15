@@ -139,9 +139,8 @@ int main(int argc, char** argv)
 		}
 		Vec3f normal = cross((world_coords[2]-world_coords[0]),(world_coords[1]-world_coords[0]));
 		normal.normalize();
-		float lightIntensity = normal*light_direction;
-		
-		triangle(pts, zbuffer, image, TGAColor(lightIntensity * 255.f, lightIntensity * 255.f, lightIntensity *255.f, 255));
+		int lightIntensity = (int)clampminmax(((normal*light_direction) * 255.f),0.f,255.f);
+		triangle(pts, zbuffer, image, TGAColor(lightIntensity, lightIntensity, lightIntensity, 255));
 		//triangle(pts, zbuffer, image, TGAColor(rand()%255, rand()%255, rand()%255, 255));
     }
 	

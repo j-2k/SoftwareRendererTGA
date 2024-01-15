@@ -47,3 +47,5 @@ void triangle(Vec3f *pts, float *zbuffer, TGAImage &image, TGAColor color);
 Vec3f world2screen(Vec3f v, int width, int height);
 
 Vec3f barycentric3D(Vec3f A, Vec3f B, Vec3f C, Vec3f P);
+
+float clampminmax(float n, float lower, float upper);

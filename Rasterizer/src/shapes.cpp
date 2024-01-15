@@ -229,6 +229,10 @@ Vec3f world2screen(Vec3f v, int width, int height) {
     return Vec3f(int((v.x+1.)*width/2.+.5), int((v.y+1.)*height/2.+.5), v.z);
 }
 
+float clampminmax(float n, float lower, float upper) {
+	return std::max(lower, std::min(n, upper));
+}
+
 //https://twitter.com/FreyaHolmer/status/1244407595059884033?lang=en for a nice visual of barycentric coordinates
 //P is the point we are testing in the bounding box surrounding the triangle, pts are the 3 points of the triangle
 /*Vec3f barycentric(Vec2i *pts, Vec2i P)
