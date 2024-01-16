@@ -33,7 +33,9 @@ First 3 Using Line Sweep, Last using Barycentric Coordinates & Bounding Box Chec
 
 ## Stage 5 Depth Buffer
 
-## Stage 6 
+## Stage 6 Orthographic To Prespective Projection
+
+## Stage 7
 
 ## Rasterizer Project Personal Notes
 #### All topics covered are below with bold stages being extremely important to understand
