@@ -32,8 +32,10 @@ First 3 Using Line Sweep, Last using Barycentric Coordinates & Bounding Box Chec
 ## Stage 4 Model Triangle Rasterization & Lighting
 
 ## Stage 5 Depth Buffer
+<img width="24.4%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/a24567df-f267-44a0-b595-3c6e66fcc638">
 
 ## Stage 6 Orthographic To Prespective Projection
+
 
 ## Stage 7
 
