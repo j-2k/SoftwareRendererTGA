@@ -18,9 +18,9 @@ An example, do you struggle understanding barycentric coordinates & prespective 
 <img src="https://github.com/j-2k/ImagePPM/assets/52252068/945a6815-6874-4052-a663-5d4f9e0ebaea"width="49%">
 
 ## Stage 2 Wireframe Rendering
-![quakewirefr](https://github.com/j-2k/ImagePPM/assets/52252068/f08e0dfe-5763-414a-b97f-b1c1d26c95ce)
-![render1](https://github.com/j-2k/ImagePPM/assets/52252068/51ddfa12-b44a-4e64-b8d1-03f0e73fbe6b)
-![Untitled-2](https://github.com/j-2k/ImagePPM/assets/52252068/24be2bd9-eec7-4f21-b87e-4963a82f53b8)
+<img width="49%" src="https://github.com/j-2k/ImagePPM/assets/52252068/51ddfa12-b44a-4e64-b8d1-03f0e73fbe6b">
+<img width="49%" src="https://github.com/j-2k/ImagePPM/assets/52252068/24be2bd9-eec7-4f21-b87e-4963a82f53b8">
+<p align="center"><img align="center" height="500px" width="" src="https://github.com/j-2k/ImagePPM/assets/52252068/f08e0dfe-5763-414a-b97f-b1c1d26c95ce">  </p>
 
 ## Stage 3 Triangle Rasterization
 First 3 Using Line Sweep, Last using Barycentric Coordinates & Bounding Box Check  
@@ -31,10 +31,15 @@ First 3 Using Line Sweep, Last using Barycentric Coordinates & Bounding Box Chec
 
 ## Stage 4 Model Triangle Rasterization & Lighting
 
-## Stage 5 Depth Buffer
-<img width="24.4%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/a24567df-f267-44a0-b595-3c6e66fcc638">
+## Stage 5 Depth Buffer Fix
+<img width="24.4%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/53b4446b-1a83-4ee6-989f-868b23356fb3">
+<img width="24.4%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/f77f2731-7d73-4b10-8f04-0f3dc8c71487">
+<img width="24.4%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/0e20b39f-e6f2-493b-969e-e9f9712c9e6b">
+<img width="24.4%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/fc0d7f7a-2136-4c3d-8bee-13cb4bdddfcc">
 
-## Stage 6 Orthographic To Prespective Projection
+## Stage 6 Depth Buffer & Prespective Projection
+<img width="24.4%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/a24567df-f267-44a0-b595-3c6e66fcc638">
+<img width="24.4%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/099d4919-e4f6-446a-8ba0-cfb5fb723931">
 
 
 ## Stage 7
