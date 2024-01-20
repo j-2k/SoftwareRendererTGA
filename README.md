@@ -30,6 +30,9 @@ First 3 Using Line Sweep, Last using Barycentric Coordinates & Bounding Box Chec
 <img width="24.4%" src="https://github.com/j-2k/ImagePPM/assets/52252068/03583538-e93c-4d72-9812-2acdb32c0c23">
 
 ## Stage 4 Model Triangle Rasterization & Lighting
+<img width="33%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/810b5c92-a448-46ed-bcd7-170e41b641c7">
+<img width="33%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/f0df9aec-52dc-4164-b450-d7b72cf965d3">
+<img width="33%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/152a159f-d65c-4a94-9ff9-fc004bb49c41">
 
 ## Stage 5 Depth Buffer Fix
 <img width="24.4%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/53b4446b-1a83-4ee6-989f-868b23356fb3">
