@@ -53,7 +53,7 @@
 			[
 				{
 					"backtrace" : 2,
-					"header" : "/Users/dsg342/Desktop/ImagePPM/Rasterizer/src/precompiledheaders.h"
+					"header" : "/Users/dsg342/Desktop/ImagePPM/rasterizer/src/precompiledheaders.h"
 				}
 			],
 			"sourceIndexes" : 
@@ -76,7 +76,7 @@
 			[
 				{
 					"backtrace" : 2,
-					"header" : "/Users/dsg342/Desktop/ImagePPM/Rasterizer/src/precompiledheaders.h"
+					"header" : "/Users/dsg342/Desktop/ImagePPM/rasterizer/src/precompiledheaders.h"
 				}
 			],
 			"sourceIndexes" : 
@@ -86,7 +86,8 @@
 				3,
 				4,
 				5,
-				6
+				6,
+				7
 			]
 		}
 	],
@@ -125,14 +126,15 @@
 				3,
 				4,
 				5,
-				6
+				6,
+				7
 			]
 		},
 		{
 			"name" : "Precompile Header File",
 			"sourceIndexes" : 
 			[
-				7
+				8
 			]
 		}
 	],
@@ -142,6 +144,12 @@
 			"backtrace" : 0,
 			"compileGroupIndex" : 0,
 			"path" : "build/macosxclang/CMakeFiles/Rasterizer.dir/cmake_pch_arm64.hxx.cxx",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "src/Discontinued/shapes.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -171,7 +179,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 1,
-			"path" : "src/shapes.cpp",
+			"path" : "src/openGL.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{

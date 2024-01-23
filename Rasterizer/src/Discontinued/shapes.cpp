@@ -1,3 +1,53 @@
+
+
+/*
+void BaryTriangle(Vec2i *pts, TGAImage &image, TGAColor color) { 
+	//Bounding Box Initialization
+    Vec2i bboxmin(image.get_width()-1,  image.get_height()-1); 
+    Vec2i bboxmax(0, 0); 
+    Vec2i clamp(image.get_width()-1, image.get_height()-1); 
+
+	//Bounding Box Calculation
+    for (int i=0; i<3; i++) { 
+        bboxmin.x = std::max(0, std::min(bboxmin.x, pts[i].x));
+	bboxmin.y = std::max(0, std::min(bboxmin.y, pts[i].y));
+
+	bboxmax.x = std::min(clamp.x, std::max(bboxmax.x, pts[i].x));
+	bboxmax.y = std::min(clamp.y, std::max(bboxmax.y, pts[i].y));
+    } 
+
+	//Loop through the bounding box containing the triangle
+    Vec2i P; 
+    for (P.x=bboxmin.x; P.x<=bboxmax.x; P.x++) { 
+        for (P.y=bboxmin.y; P.y<=bboxmax.y; P.y++) { 
+			//If the point in the bounding box resides in the triangle then color it
+            Vec3f bc_screen  = barycentric(pts, P); 
+            if (bc_screen.x<0 || bc_screen.y<0 || bc_screen.z<0) continue; 
+			//TGAColor color = TGAColor(rand() % 255, rand() % 255, rand() % 255, 255); //random colors
+            image.set(P.x, P.y, color); 
+        } 
+    } 
+} */
+
+
+
+//https://twitter.com/FreyaHolmer/status/1244407595059884033?lang=en for a nice visual of barycentric coordinates
+//P is the point we are testing in the bounding box surrounding the triangle, pts are the 3 points of the triangle
+/*Vec3f barycentric(Vec2i *pts, Vec2i P)
+{
+	//Cross Product (this line is hard to understand)
+	Vec3f cx = cross(pts[2].x-pts[0].x, pts[1].x-pts[0].x, pts[0].x-P.x)Vec3f(pts[2].y-pts[0].y, pts[1].y-pts[0].y, pts[0].y-P.y);
+	
+	//Handle case for Degenerate Triangle
+	if(std::abs(cx.z) < 1) return Vec3f(-1,1,1);
+	//Return a negative to indicate that the point is outside the triangle & will be discarded by mr rasterizer
+
+	//Return Barycentric Coordinates
+	return Vec3f(1.f-(cx.x+cx.y)/cx.z, cx.y/cx.z, cx.x/cx.z);
+}*/
+
+/*Last comments before discontinuing below===
+
 #include "shapes.h"
 #include "tgaimage.h"
 #include "geometry.h"
@@ -6,6 +56,7 @@
 #include <cmath>
 #include <cstdlib>
 #include <limits>
+
 
 //Bresenham Line Algorithm
 void line2pOld(int x1,int y1, int x2, int y2, TGAImage &image, TGAColor color)
@@ -154,40 +205,12 @@ void LineSweepTriangle(Vec2i p0, Vec2i p1, Vec2i p2, TGAImage &image, TGAColor c
 
 	//I wont bother to combine these like ssloy does since we are just going to do barycentric coordinates anyways which will be much more efficient
 
-	/*
-	line2p(p0, p1, image, yellow);
-    line2p(p1, p2, image, yellow);
-    line2p(p2, p0, image, purple);
-	*/
+	
+	//line2p(p0, p1, image, yellow);
+    //line2p(p1, p2, image, yellow);
+    //line2p(p2, p0, image, purple);
+	
 }
-/*
-void BaryTriangle(Vec2i *pts, TGAImage &image, TGAColor color) { 
-	//Bounding Box Initialization
-    Vec2i bboxmin(image.get_width()-1,  image.get_height()-1); 
-    Vec2i bboxmax(0, 0); 
-    Vec2i clamp(image.get_width()-1, image.get_height()-1); 
-
-	//Bounding Box Calculation
-    for (int i=0; i<3; i++) { 
-        bboxmin.x = std::max(0, std::min(bboxmin.x, pts[i].x));
-	bboxmin.y = std::max(0, std::min(bboxmin.y, pts[i].y));
-
-	bboxmax.x = std::min(clamp.x, std::max(bboxmax.x, pts[i].x));
-	bboxmax.y = std::min(clamp.y, std::max(bboxmax.y, pts[i].y));
-    } 
-
-	//Loop through the bounding box containing the triangle
-    Vec2i P; 
-    for (P.x=bboxmin.x; P.x<=bboxmax.x; P.x++) { 
-        for (P.y=bboxmin.y; P.y<=bboxmax.y; P.y++) { 
-			//If the point in the bounding box resides in the triangle then color it
-            Vec3f bc_screen  = barycentric(pts, P); 
-            if (bc_screen.x<0 || bc_screen.y<0 || bc_screen.z<0) continue; 
-			//TGAColor color = TGAColor(rand() % 255, rand() % 255, rand() % 255, 255); //random colors
-            image.set(P.x, P.y, color); 
-        } 
-    } 
-} */
 
 void triangle(Vec3f *pts, float *zbuffer, TGAImage &image, TGAColor color) {
 	//FINDING THE BOUNDING BOX OF THE TRIANGLE
@@ -233,21 +256,6 @@ float clampminmax(float n, float lower, float upper) {
 	return std::max(lower, std::min(n, upper));
 }
 
-//https://twitter.com/FreyaHolmer/status/1244407595059884033?lang=en for a nice visual of barycentric coordinates
-//P is the point we are testing in the bounding box surrounding the triangle, pts are the 3 points of the triangle
-/*Vec3f barycentric(Vec2i *pts, Vec2i P)
-{
-	//Cross Product (this line is hard to understand)
-	Vec3f cx = cross(pts[2].x-pts[0].x, pts[1].x-pts[0].x, pts[0].x-P.x)Vec3f(pts[2].y-pts[0].y, pts[1].y-pts[0].y, pts[0].y-P.y);
-	
-	//Handle case for Degenerate Triangle
-	if(std::abs(cx.z) < 1) return Vec3f(-1,1,1);
-	//Return a negative to indicate that the point is outside the triangle & will be discarded by mr rasterizer
-
-	//Return Barycentric Coordinates
-	return Vec3f(1.f-(cx.x+cx.y)/cx.z, cx.y/cx.z, cx.x/cx.z);
-}*/
-
 Vec3f barycentric3D(Vec3f A, Vec3f B, Vec3f C, Vec3f P) {
     Vec3f s[2];
     for (int i=2; i--; ) {
@@ -255,7 +263,7 @@ Vec3f barycentric3D(Vec3f A, Vec3f B, Vec3f C, Vec3f P) {
         s[i][1] = B[i]-A[i];
         s[i][2] = A[i]-P[i];
     }
-    Vec3f u = (s[0]^s[1]);
+    Vec3f u = cross(s[0],s[1]);
     if (std::abs(u[2])>1e-2) // dont forget that u[2] is integer. If it is zero then triangle ABC is degenerate
         return Vec3f(1.f-(u.x+u.y)/u.z, u.y/u.z, u.x/u.z);
     return Vec3f(-1,1,1); // in this case generate negative coordinates, it will be thrown away by the rasterizator
@@ -284,9 +292,10 @@ void rasterYbuffer(Vec2i p0, Vec2i p1, TGAImage &image, TGAColor color, int ybuf
 			{
 				float m = ybuffer[x]/x;
 				image.set(x, i, TGAColor(m*255,m*255,m*255,255));
-			}*/
+			}*//*
 			
 			std::cout << ybuffer[x] << std::endl;
         }
     }
 }
+*/

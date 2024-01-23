@@ -1,16 +1,4 @@
-#include "tgaimage.h"
-#include "geometry.h"
 
-//Bresenham Line Algorithm Old
-void line2pOld(int x1,int y1, int x2, int y2, TGAImage &image, TGAColor color);
-
-//Bresenham Line Algorithm Overload with Vec2i
-void line2p(Vec2i p0, Vec2i p1, TGAImage &image, TGAColor color);
-//Bresenham Line Algorithm Overload with ints
-void line2p(int x0, int y0, int x1, int y1, TGAImage &image, TGAColor color);
-
-//Triangle Method using Line Sweep
-void LineSweepTriangle(Vec2i p0, Vec2i p1, Vec2i p2, TGAImage &image, TGAColor color);
 
 //Triangle Method using Barycentric Coordinates
 //void BaryTriangle(Vec2i *pts, TGAImage &image, TGAColor color);
@@ -40,6 +28,22 @@ The weights (or coordinates) always sum to 1, and each one ranges from 0 to 1. I
 If a weight is 1, the point coincides with that vertex.
 */
 
+/*Last comments before discontinuing below===
+
+#include "tgaimage.h"
+#include "geometry.h"
+
+//Bresenham Line Algorithm Old
+void line2pOld(int x1,int y1, int x2, int y2, TGAImage &image, TGAColor color);
+
+//Bresenham Line Algorithm Overload with Vec2i
+void line2p(Vec2i p0, Vec2i p1, TGAImage &image, TGAColor color);
+//Bresenham Line Algorithm Overload with ints
+void line2p(int x0, int y0, int x1, int y1, TGAImage &image, TGAColor color);
+
+//Triangle Method using Line Sweep
+void LineSweepTriangle(Vec2i p0, Vec2i p1, Vec2i p2, TGAImage &image, TGAColor color);
+
 //void rasterYbuffer(Vec2i p0, Vec2i p1, TGAImage &image, TGAColor color, int ybuffer[]);
 
 void triangle(Vec3f *pts, float *zbuffer, TGAImage &image, TGAColor color);
@@ -49,3 +53,5 @@ Vec3f world2screen(Vec3f v, int width, int height);
 Vec3f barycentric3D(Vec3f A, Vec3f B, Vec3f C, Vec3f P);
 
 float clampminmax(float n, float lower, float upper);
+
+*/

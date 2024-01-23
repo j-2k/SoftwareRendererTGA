@@ -19,6 +19,7 @@ Vec3f camera(0,0,7);
 int *zbuffer = NULL;
 
 
+/* First Camera Prespective Projection
 Vec3f m2v(Matrix m) {
     return Vec3f(m[0][0]/m[3][0], m[1][0]/m[3][0], m[2][0]/m[3][0]);//(x/w,y/w,z/w) divide by w to get the normalized vector
 }
@@ -74,11 +75,12 @@ void triangle(Vec3i t0, Vec3i t1, Vec3i t2, Vec2i uv0, Vec2i uv1, Vec2i uv2, TGA
         }
     }
 }
+*/
 
 
 int main(int argc, char** argv)
 {
-	//terminal to run > "cmake .. && make && ./rasterizer" in 1 command
+	//terminal to go to build first then os type run > "cmake ../.. && make && ./rasterizer" in 1 command
     int run = FileRunIndex(argc, argv);//ignore this is garbage mainly done for testing & learning some stuff
 	
     TGAImage image(width, height, TGAImage::RGB);
@@ -211,7 +213,7 @@ int main(int argc, char** argv)
     }
 	*/
 
-	/*Prespective Projection*/
+	/*First Prespective Projection
 
 
 	zbuffer = new int[width*height];
@@ -268,9 +270,12 @@ int main(int argc, char** argv)
 		std::string output = "../../images/depth" + rstr + ".tga";
         zbimage.write_tga_file(output.c_str());
     }
-	
     delete model;
     delete [] zbuffer;
+    */
+	
+    
+
 	return 0;
 }
 
