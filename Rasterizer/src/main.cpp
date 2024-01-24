@@ -8,7 +8,7 @@ const TGAColor yellow = TGAColor(255, 255, 0, 255);
 const TGAColor purple = TGAColor(255, 0, 255, 255);
 
 //const Vec3f light_direction(1,-1,-1); //Vec3f(-1,-1,-1);
-const Vec3f light_direction(0,0,-1);
+//const Vec3f light_direction(0,0,-1);
 
 Model *model = NULL;
 const int width  = 1000;
@@ -19,7 +19,8 @@ const int height = 1000;
 //int *zbuffer = NULL;
 
 //Shader Stage
-Vec3f eye(1,1,1);
+Vec3f light_direction(0,0,-1);
+Vec3f eye(1,1,3);
 Vec3f origin(0,0,0);
 Vec3f up(0,1,0);
 
@@ -83,12 +84,30 @@ void triangle(Vec3i t0, Vec3i t1, Vec3i t2, Vec2i uv0, Vec2i uv1, Vec2i uv2, TGA
 */
 
 
+struct JumaShader : public IShader {
+    Vec3f varying_intensity; // written by vertex shader, read by fragment shader
+
+    virtual Vec4f vertex(int iface, int nthvert) {
+        varying_intensity[nthvert] = std::max(0.f, model->normal(iface, nthvert)*light_direction); // get diffuse lighting intensity
+        Vec4f gl_Vertex = embed<4>(model->vert(iface, nthvert)); // read the vertex from .obj file
+        return Viewport*Projection*ModelView*gl_Vertex; // transform it to screen coordinates
+    }
+
+    virtual bool fragment(Vec3f bar, TGAColor &color) {
+        float intensity = varying_intensity*bar;   // interpolate intensity for the current pixel
+        color = TGAColor(255, 255, 255)*intensity; // well duh
+        return false;                              // no, we do not discard this pixel
+    }
+};
+
 int main(int argc, char** argv)
 {
 	//terminal to go to build first then os type run > "cmake ../.. && make && ./rasterizer" in 1 command
     int run = FileRunIndex(argc, argv);//ignore this is garbage mainly done for testing & learning some stuff
 	
     TGAImage image(width, height, TGAImage::RGB);
+
+
 
 	/* UV RENDERING
 	for (size_t x = 0; x < width; x++)
@@ -281,9 +300,39 @@ int main(int argc, char** argv)
 	
     /*First Shader & Model, View, Projection Transformations*/
 
+    lookat(eye, origin, up);
+    viewport(width/8, height/8, width*3/4, height*3/4);
+    projection(-1.f/(eye - origin).norm());
+    light_direction.normalize();
 
+    TGAImage zbuffer(width, height, TGAImage::GRAYSCALE);
 
-	return 0;
+    JumaShader shader;
+    for (int i=0; i<model->nfaces(); i++) {
+        Vec4f screen_coords[3];
+        for (int j=0; j<3; j++) {
+            screen_coords[j] = shader.vertex(i, j);
+        }
+        triangle(screen_coords, shader, image, zbuffer);
+    }
+
+    image.  flip_vertically(); // to place the origin in the bottom left corner of the image
+    zbuffer.flip_vertically();
+
+    {
+    	std::string rstr = std::to_string(run);
+		std::string output = "../../images/output" + rstr + ".tga";
+		image.write_tga_file(output.c_str());
+    }
+
+    {
+        std::string rstr = std::to_string(run);
+        std::string output = "../../images/depth" + rstr + ".tga";
+        zbuffer.write_tga_file(output.c_str());
+    }
+
+    delete model;
+    return 0;
 }
 
 
