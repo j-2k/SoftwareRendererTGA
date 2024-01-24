@@ -13,10 +13,15 @@ const Vec3f light_direction(0,0,-1);
 Model *model = NULL;
 const int width  = 1000;
 const int height = 1000;
-const int depth = 255;
+//const int depth = 255;
 
-Vec3f camera(0,0,7);
-int *zbuffer = NULL;
+//Vec3f camera(0,0,7);
+//int *zbuffer = NULL;
+
+//Shader Stage
+Vec3f eye(1,1,1);
+Vec3f origin(0,0,0);
+Vec3f up(0,1,0);
 
 
 /* First Camera Prespective Projection
@@ -274,7 +279,9 @@ int main(int argc, char** argv)
     delete [] zbuffer;
     */
 	
-    
+    /*First Shader & Model, View, Projection Transformations*/
+
+
 
 	return 0;
 }
