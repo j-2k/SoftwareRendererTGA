@@ -56,8 +56,10 @@ First 3 Using Line Sweep, Last using Barycentric Coordinates & Bounding Box Chec
 4. Wireframe Rendering - Connect the lines with the verticies on a obj file
 5. Old Line Sweep Algorithim - Triangle Rasterization Stage (Slow)
 6. ***Barycentric Coordinates - Triangle Rasterization Stage***
-7. ***Depth Buffer***
-8. ***OpenGL Shader Pipeline***
+7. ***Z Buffer Algorithim***/***Scan Line Rendering***, Painters Algorithim - Depth Buffer Stage
+8. Orthographic to ***Prespective Projection*** - Static Prespective Camera Stage
+9. ***Homogenous Coordinates & MVP (MODEL, VIEW, PROJECTION)*** - Moving Prespective Camera Stage
+10. ***OpenGL Shader Pipeline***
 
 
 # CPP2PPM Project
