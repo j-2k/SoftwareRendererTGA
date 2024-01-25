@@ -20,7 +20,7 @@ const int height = 1000;
 
 //Shader Stage
 Vec3f light_direction(1,1,1);
-Vec3f eye(0,1,3);
+Vec3f eye(0.5,1,3);
 Vec3f origin(0,0,0);
 Vec3f up(0,1,0);
 
@@ -84,40 +84,31 @@ void triangle(Vec3i t0, Vec3i t1, Vec3i t2, Vec2i uv0, Vec2i uv1, Vec2i uv2, TGA
 */
 
 
+float lerp(float a, float b, float t) {
+    return a + (b-a)*t;
+}
+
 struct JumaShader : public IShader {
-    Vec3f varying_intensity; // written by vertex shader, read by fragment shader
-
-
+    mat<2,3,float> varying_uv;  // same as above
+    mat<4,4,float> uniform_M;   //  Projection*ModelView
+    mat<4,4,float> uniform_MIT; // (Projection*ModelView).invert_transpose()
 
     virtual Vec4f vertex(int iface, int nthvert) {
-        varying_intensity[nthvert] = std::max(0.f, model->normal(iface, nthvert)*light_direction); // get diffuse lighting intensity
+        varying_uv.set_col(nthvert, model->uv(iface, nthvert));
         Vec4f gl_Vertex = embed<4>(model->vert(iface, nthvert)); // read the vertex from .obj file
-        if(gl_Vertex[0] > 0)
-        {   
-            gl_Vertex[1] += (0.01f * gl_Vertex[1]);
-        }
         return Viewport*Projection*ModelView*gl_Vertex; // transform it to screen coordinates
     }
 
     virtual bool fragment(Vec3f bar, TGAColor &color) {
-        float intensity = varying_intensity*bar;   // interpolate intensity for the current pixel
-        TGAColor c;
-        if(intensity>0.97)
-        {
-            intensity = 1;
-            c = TGAColor(255, 255, 255);
-        }
-        else if (intensity > 0.5)
-        {
-            intensity = 0.75;
-            c = TGAColor(255, 255, 0);
-        }
-        else
-        {
-            intensity = 0.25;
-            c = TGAColor(0, 100, 255);
-        }
-        color = c*intensity;    // well duh
+        Vec2f uv = varying_uv*bar;
+        Vec3f normal = proj<3>(uniform_MIT*embed<4>(model->normal(uv))).normalize();
+        Vec3f light = proj<3>(uniform_M  *embed<4>(light_direction  )).normalize();     
+        Vec3f reflect =(normal*(normal*light*2.f) - light).normalize();
+        float spec = pow(std::max(reflect.z, 0.0f), model->specular(uv));
+        float diff = std::max(0.f, normal*light);       
+        TGAColor c = model->diffuse(uv);
+        color = c;    // well duh
+        //for (int i=0; i<3; i++) color[i] = std::min<float>(100 + abs(c[i]*(1.2*diff + .6*spec)), 255);
         return false;           // no, we do not discard this pixel
     }
 };
