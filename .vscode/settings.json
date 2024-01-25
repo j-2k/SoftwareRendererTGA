@@ -120,7 +120,8 @@
     "unordered_map": "cpp",
     "variant": "cpp",
     "vector": "cpp",
-    "algorithm": "cpp"
+    "algorithm": "cpp",
+    "cassert": "cpp"
   },
   "cmake.sourceDirectory": "/Users/dsg342/Desktop/ImagePPM/Rasterizer"
 }
