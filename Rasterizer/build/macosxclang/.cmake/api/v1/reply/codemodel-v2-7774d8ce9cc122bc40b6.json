@@ -291,7 +291,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "Rasterizer::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Rasterizer-Release-188b727d6ee8138c4267.json",
+					"jsonFile" : "target-Rasterizer-Release-42bea2dff587b862563f.json",
 					"name" : "Rasterizer",
 					"projectIndex" : 0
 				}
@@ -301,8 +301,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/dsg342/Desktop/ImagePPM/Rasterizer/build/macosxclang",
-		"source" : "/Users/dsg342/Desktop/ImagePPM/Rasterizer"
+		"build" : "/Users/dsg342/Desktop/ImagePPM/rasterizer/build/macosxclang",
+		"source" : "/Users/dsg342/Desktop/ImagePPM/rasterizer"
 	},
 	"version" : 
 	{

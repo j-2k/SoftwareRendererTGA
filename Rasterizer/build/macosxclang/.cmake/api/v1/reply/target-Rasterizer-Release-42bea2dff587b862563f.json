@@ -45,7 +45,7 @@
 					"fragment" : "-O3 -DNDEBUG -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk"
 				},
 				{
-					"fragment" : "-Winvalid-pch -Xclang -emit-pch -Xclang -include -Xclang /Users/dsg342/Desktop/ImagePPM/Rasterizer/build/macosxclang/CMakeFiles/Rasterizer.dir/cmake_pch_arm64.hxx -x c++-header"
+					"fragment" : "-Winvalid-pch -Xclang -emit-pch -Xclang -include -Xclang /Users/dsg342/Desktop/ImagePPM/rasterizer/build/macosxclang/CMakeFiles/Rasterizer.dir/cmake_pch_arm64.hxx -x c++-header"
 				}
 			],
 			"language" : "CXX",
@@ -53,7 +53,7 @@
 			[
 				{
 					"backtrace" : 2,
-					"header" : "/Users/dsg342/Desktop/ImagePPM/Rasterizer/src/precompiledheaders.h"
+					"header" : "/Users/dsg342/Desktop/ImagePPM/rasterizer/src/precompiledheaders.h"
 				}
 			],
 			"sourceIndexes" : 
@@ -68,7 +68,7 @@
 					"fragment" : "-O3 -DNDEBUG -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk"
 				},
 				{
-					"fragment" : "-Winvalid-pch -Xarch_arm64 -include/Users/dsg342/Desktop/ImagePPM/Rasterizer/build/macosxclang/CMakeFiles/Rasterizer.dir/cmake_pch_arm64.hxx"
+					"fragment" : "-Winvalid-pch -Xarch_arm64 -include/Users/dsg342/Desktop/ImagePPM/rasterizer/build/macosxclang/CMakeFiles/Rasterizer.dir/cmake_pch_arm64.hxx"
 				}
 			],
 			"language" : "CXX",
@@ -76,7 +76,7 @@
 			[
 				{
 					"backtrace" : 2,
-					"header" : "/Users/dsg342/Desktop/ImagePPM/Rasterizer/src/precompiledheaders.h"
+					"header" : "/Users/dsg342/Desktop/ImagePPM/rasterizer/src/precompiledheaders.h"
 				}
 			],
 			"sourceIndexes" : 

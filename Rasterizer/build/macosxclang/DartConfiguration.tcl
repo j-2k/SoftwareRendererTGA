@@ -4,8 +4,8 @@
 
 
 # Configuration directories and files
-SourceDirectory: /Users/dsg342/Desktop/ImagePPM/Rasterizer
-BuildDirectory: /Users/dsg342/Desktop/ImagePPM/Rasterizer/build/macosxclang
+SourceDirectory: /Users/dsg342/Desktop/ImagePPM/rasterizer
+BuildDirectory: /Users/dsg342/Desktop/ImagePPM/rasterizer/build/macosxclang
 
 # Where to place the cost data store
 CostDataFile: 
@@ -27,7 +27,7 @@ SubmitInactivityTimeout:
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "/opt/homebrew/Cellar/cmake/3.28.1/bin/cmake" "/Users/dsg342/Desktop/ImagePPM/Rasterizer"
+ConfigureCommand: "/opt/homebrew/Cellar/cmake/3.28.1/bin/cmake" "/Users/dsg342/Desktop/ImagePPM/rasterizer"
 MakeCommand: /opt/homebrew/Cellar/cmake/3.28.1/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}"
 DefaultCTestConfigurationType: Release
 

@@ -19,7 +19,7 @@ const int height = 1000;
 //int *zbuffer = NULL;
 
 //Shader Stage
-Vec3f light_direction(0,0,-1);
+Vec3f light_direction(1,1,1);
 Vec3f eye(1,1,3);
 Vec3f origin(0,0,0);
 Vec3f up(0,1,0);
@@ -318,15 +318,13 @@ int main(int argc, char** argv)
 
     image.  flip_vertically(); // to place the origin in the bottom left corner of the image
     zbuffer.flip_vertically();
-
+    std::string rstr = std::to_string(run);
     {
-    	std::string rstr = std::to_string(run);
 		std::string output = "../../images/output" + rstr + ".tga";
 		image.write_tga_file(output.c_str());
     }
 
     {
-        std::string rstr = std::to_string(run);
         std::string output = "../../images/depth" + rstr + ".tga";
         zbuffer.write_tga_file(output.c_str());
     }

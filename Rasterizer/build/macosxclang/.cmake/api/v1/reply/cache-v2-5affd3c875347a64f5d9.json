@@ -83,7 +83,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/dsg342/Desktop/ImagePPM/Rasterizer/build/macosxclang"
+			"value" : "/Users/dsg342/Desktop/ImagePPM/rasterizer/build/macosxclang"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -527,7 +527,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/dsg342/Desktop/ImagePPM/Rasterizer/build/macosxclang/CMakeFiles/pkgRedirects"
+			"value" : "/Users/dsg342/Desktop/ImagePPM/rasterizer/build/macosxclang/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -1735,7 +1735,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/dsg342/Desktop/ImagePPM/Rasterizer/build/macosxclang"
+			"value" : "/Users/dsg342/Desktop/ImagePPM/rasterizer/build/macosxclang"
 		},
 		{
 			"name" : "Rasterizer_IS_TOP_LEVEL",
@@ -1759,7 +1759,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/dsg342/Desktop/ImagePPM/Rasterizer"
+			"value" : "/Users/dsg342/Desktop/ImagePPM/rasterizer"
 		},
 		{
 			"name" : "SITE",
