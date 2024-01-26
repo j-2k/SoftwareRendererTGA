@@ -45,7 +45,11 @@ First 3 Using Line Sweep, Last using Barycentric Coordinates & Bounding Box Chec
 <img width="24.4%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/099d4919-e4f6-446a-8ba0-cfb5fb723931">
 
 
-## Stage 7
+## Stage 7 Shader Pipeline / Frag & Vert Manipulation
+<img width="24.4%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/b2f40fbe-862a-4581-b793-c5d4154215c4">
+<img width="24.4%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/fae496d4-4bbd-4aa1-8ee5-14ab82f716a4">
+<img width="24.4%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/eb210168-1e8b-4035-95dd-f1e1074c6664">
+<img width="24.4%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/7b9aee9f-086a-4207-8acd-e4742be0e9df">
 
 ## Rasterizer Project Personal Notes
 #### All topics covered are below with bold stages being extremely important to understand
