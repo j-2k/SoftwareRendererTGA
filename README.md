@@ -3,7 +3,10 @@ This project contains 2 things, a ppm image generator which is the minor project
 
 Software Rasterizer was learned through SSloy's TinyRenderer Wiki on github direct link > https://github.com/ssloy/tinyrenderer/wiki  
 
-Note: Even though I'm going through Sloy's Tiny renderer I sometimes dont understand stuff & when thats the case, I always look on youtube about the topic im struggling to understand, one series that keeps coming is [Brendan Galeas Vulkan Game Engine Series](https://www.youtube.com/playlist?list=PL8327DO66nu9qYVKLDmdLW_84-yE4auCR). I have already suggested this in learning resources of my graphics programming roadmap repo, but I just really want to say it's insanely informative & probably the best series when it comes to quality and being to-date.
+
+
+Note: Even though I'm going through Sloy's Tiny renderer I sometimes dont understand stuff & when thats the case, I always look on youtube about the topic im struggling to understand, one series that keeps coming is [Brendan Galeas Vulkan Game Engine Series](https://www.youtube.com/playlist?list=PL8327DO66nu9qYVKLDmdLW_84-yE4auCR). I have already suggested this in learning resources of my graphics programming roadmap repo, but I just really want to say it's insanely informative & probably the best series when it comes to quality and being to-date.  
+This is also really helpful > [Triangle Rasterization Algorithims](http://www.sunshine2k.de/coding/java/TriangleRasterization/TriangleRasterization.html)
 
 An example, do you struggle understanding barycentric coordinates & prespective projection (specificially the math)? His videos cover these topics really well (especially 
  his prespective projection video).
