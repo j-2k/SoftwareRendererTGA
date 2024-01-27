@@ -43,7 +43,8 @@ First 3 Using Line Sweep, Last using Barycentric Coordinates & Bounding Box Chec
 ## Stage 6 Depth Buffer & Prespective Projection
 <img width="24.4%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/a24567df-f267-44a0-b595-3c6e66fcc638">
 <img width="24.4%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/099d4919-e4f6-446a-8ba0-cfb5fb723931">
-
+<img width="24.4%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/fb62ace2-cba6-4fde-8bf9-9806c5017259">
+<img width="24.4%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/591974c9-a774-44a8-839d-90fdddd547a5">
 
 ## Stage 7 Shader Pipeline / Frag & Vert Manipulation
 <img width="24.4%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/b2f40fbe-862a-4581-b793-c5d4154215c4">
