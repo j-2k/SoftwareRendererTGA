@@ -55,6 +55,8 @@ First 3 Using Line Sweep, Last using Barycentric Coordinates & Bounding Box Chec
 <img width="24.4%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/eb210168-1e8b-4035-95dd-f1e1074c6664">
 <img width="24.4%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/7b9aee9f-086a-4207-8acd-e4742be0e9df">
 
+## Stage 8 Shadow Mapping & Ambient Occulusion
+
 ## Rasterizer Project Personal Notes
 #### All topics covered are below with bold stages being extremely important to understand
 (this is mainly done for myself to remember the important stages for rendering):  
