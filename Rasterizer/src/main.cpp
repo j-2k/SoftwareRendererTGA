@@ -11,6 +11,7 @@ const TGAColor purple = TGAColor(255, 0, 255, 255);
 //const Vec3f light_direction(0,0,-1);
 
 Model *model = NULL;
+float *shadowbuffer = NULL;
 const int width  = 1000;
 const int height = 1000;
 //const int depth = 255;
@@ -88,6 +89,58 @@ float lerp(float a, float b, float t) {
     return a + (b-a)*t;
 }
 
+struct Shader : public IShader {
+    mat<4,4,float> uniform_M;   //  Projection*ModelView
+    mat<4,4,float> uniform_MIT; // (Projection*ModelView).invert_transpose()
+    mat<4,4,float> uniform_Mshadow; // transform framebuffer screen coordinates to shadowbuffer screen coordinates
+    mat<2,3,float> varying_uv;  // triangle uv coordinates, written by the vertex shader, read by the fragment shader
+    mat<3,3,float> varying_tri; // triangle coordinates before Viewport transform, written by VS, read by FS
+
+    Shader(Matrix M, Matrix MIT, Matrix MS) : uniform_M(M), uniform_MIT(MIT), uniform_Mshadow(MS), varying_uv(), varying_tri() {}
+
+    virtual Vec4f vertex(int iface, int nthvert) {
+        varying_uv.set_col(nthvert, model->uv(iface, nthvert));
+        Vec4f gl_Vertex = Viewport*Projection*ModelView*embed<4>(model->vert(iface, nthvert));
+        varying_tri.set_col(nthvert, proj<3>(gl_Vertex/gl_Vertex[3]));
+        return gl_Vertex;
+    }
+
+    virtual bool fragment(Vec3f bar, TGAColor &color) {
+        Vec4f sb_p = uniform_Mshadow*embed<4>(varying_tri*bar); // corresponding point in the shadow buffer
+        sb_p = sb_p/sb_p[3];
+        int idx = int(sb_p[0]) + int(sb_p[1])*width; // index in the shadowbuffer array
+        float shadow = .3+.7*(shadowbuffer[idx]<sb_p[2] + 50.); // magic coeff to avoid z-fighting
+        Vec2f uv = varying_uv*bar;                 // interpolate uv for the current pixel
+        Vec3f n = proj<3>(uniform_MIT*embed<4>(model->normal(uv))).normalize(); // normal
+        Vec3f l = proj<3>(uniform_M  *embed<4>(light_direction        )).normalize(); // light vector
+        Vec3f r = (n*(n*l*2.f) - l).normalize();   // reflected light
+        float spec = pow(std::max(r.z, 0.0f), model->specular(uv));
+        float diff = std::max(0.f, n*l);
+        TGAColor c = model->diffuse(uv);
+        for (int i=0; i<3; i++) color[i] = std::min<float>(20 + c[i]*shadow*(1.2*diff + .6*spec), 255);
+        return false;
+    }
+};
+
+struct DepthShader : public IShader {
+    mat<3,3,float> varying_tri;
+
+    DepthShader() : varying_tri() {}
+
+    virtual Vec4f vertex(int iface, int nthvert) {
+        Vec4f gl_Vertex = embed<4>(model->vert(iface, nthvert)); // read the vertex from .obj file
+        gl_Vertex = Viewport*Projection*ModelView*gl_Vertex;          // transform it to screen coordinates
+        varying_tri.set_col(nthvert, proj<3>(gl_Vertex/gl_Vertex[3]));
+        return gl_Vertex;
+    }
+
+    virtual bool fragment(Vec3f bar, TGAColor &color) {
+        Vec3f p = varying_tri*bar;
+        color = TGAColor(255, 255, 255)*(p.z/depth);
+        return false;
+    }
+};
+
 struct JumaShader : public IShader {
     mat<2,3,float> varying_uv;  // same as above
     mat<4,4,float> uniform_M;   //  Projection*ModelView
@@ -136,7 +189,8 @@ int main(int argc, char** argv)
 	*/
 
 	//model = new Model("../../models/duoranger.obj");
-	model = new Model("../../models/african_head.obj");
+	//model = new Model("../../models/african_head.obj");
+    model = new Model("../../models/diablo3_pose.obj");
 
 	/* Obj Wireframe Rendering Lines Old
 	for (int i=0; i<model->nfaces(); i++) { 
@@ -318,13 +372,12 @@ int main(int argc, char** argv)
     projection(-1.f/(eye - origin).norm());
     light_direction.normalize();
 
+    /* shader with normal and spec implemented
     TGAImage zbuffer(width, height, TGAImage::GRAYSCALE);
 
     JumaShader shader;
-
     shader.uniform_M   =  Projection*ModelView;
     shader.uniform_MIT = (Projection*ModelView).invert_transpose();
-    
     for (int i=0; i<model->nfaces(); i++) {
         Vec4f screen_coords[3];
         for (int j=0; j<3; j++) {
@@ -332,9 +385,54 @@ int main(int argc, char** argv)
         }
         triangle(screen_coords, shader, image, zbuffer);
     }
+    */
+
+    float *zbuffer = new float[width*height];
+    shadowbuffer   = new float[width*height];
+    for (int i=width*height; --i; ) {
+        zbuffer[i] = shadowbuffer[i] = -std::numeric_limits<float>::max();
+    }
+
+
+    TGAImage depth(width, height, TGAImage::RGB);
+    //TGAImage frame(width, height, TGAImage::RGB);
+
+   { // shadow buffer first pass
+        lookat(light_direction, origin, up);
+        viewport(width/8, height/8, width*3/4, height*3/4);
+        projection(0);
+
+        DepthShader depthshader;
+        Vec4f screen_coords[3];
+        for (int i=0; i<model->nfaces(); i++) {
+            for (int j=0; j<3; j++) {
+                screen_coords[j] = depthshader.vertex(i, j);
+            }
+            triangle(screen_coords, depthshader, depth, shadowbuffer);
+        }
+    }
+
+    Matrix M = Viewport*Projection*ModelView;
+
+    { // frame buffer second/final pass
+        lookat(eye, origin, up);
+        viewport(width/8, height/8, width*3/4, height*3/4);
+        projection(-1.f/(eye-origin).norm());
+
+        Shader shader(ModelView, (Projection*ModelView).invert_transpose(), M*(Viewport*Projection*ModelView).invert());
+        Vec4f screen_coords[3];
+        for (int i=0; i<model->nfaces(); i++) {
+            for (int j=0; j<3; j++) {
+                screen_coords[j] = shader.vertex(i, j);
+            }
+            triangle(screen_coords, shader, image, zbuffer);
+        }
+    }
 
     image.  flip_vertically(); // to place the origin in the bottom left corner of the image
-    zbuffer.flip_vertically();
+    depth.flip_vertically(); // to place the origin in the bottom left corner of the image
+
+    //zbuffer.flip_vertically();
     std::string rstr = std::to_string(run);
     {
 		std::string output = "../../images/output" + rstr + ".tga";
@@ -343,10 +441,15 @@ int main(int argc, char** argv)
 
     {
         std::string output = "../../images/depth" + rstr + ".tga";
-        zbuffer.write_tga_file(output.c_str());
+        //zbuffer.write_tga_file(output.c_str());
+        depth.write_tga_file(output.c_str());
     }
+    
 
     delete model;
+    delete [] zbuffer;
+    delete [] shadowbuffer;
+
     return 0;
 }
 
