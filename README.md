@@ -3,7 +3,10 @@ This project contains 2 things, a ppm image generator which is the minor project
 
 Software Rasterizer was learned through SSloy's TinyRenderer Wiki on github direct link > https://github.com/ssloy/tinyrenderer/wiki  
 
-Note: Even though I'm going through Sloy's Tiny renderer I sometimes dont understand stuff & when thats the case, I always look on youtube about the topic im struggling to understand, one series that keeps coming is [Brendan Galeas Vulkan Game Engine Series](https://www.youtube.com/playlist?list=PL8327DO66nu9qYVKLDmdLW_84-yE4auCR). I have already suggested this in learning resources of my graphics programming roadmap repo, but I just really want to say it's insanely informative & probably the best series when it comes to quality and being to-date.
+
+
+Note: Even though I'm going through Sloy's Tiny renderer I sometimes dont understand stuff & when thats the case, I always look on youtube about the topic im struggling to understand, one series that keeps coming is [Brendan Galeas Vulkan Game Engine Series](https://www.youtube.com/playlist?list=PL8327DO66nu9qYVKLDmdLW_84-yE4auCR). I have already suggested this in learning resources of my graphics programming roadmap repo, but I just really want to say it's insanely informative & probably the best series when it comes to quality and being to-date.  
+This is also really helpful > [Triangle Rasterization Algorithims](http://www.sunshine2k.de/coding/java/TriangleRasterization/TriangleRasterization.html)
 
 An example, do you struggle understanding barycentric coordinates & prespective projection (specificially the math)? His videos cover these topics really well (especially 
  his prespective projection video).
@@ -43,9 +46,17 @@ First 3 Using Line Sweep, Last using Barycentric Coordinates & Bounding Box Chec
 ## Stage 6 Depth Buffer & Prespective Projection
 <img width="24.4%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/a24567df-f267-44a0-b595-3c6e66fcc638">
 <img width="24.4%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/099d4919-e4f6-446a-8ba0-cfb5fb723931">
+<img width="24.4%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/fb62ace2-cba6-4fde-8bf9-9806c5017259">
+<img width="24.4%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/591974c9-a774-44a8-839d-90fdddd547a5">
 
+## Stage 7 Shader Pipeline / Frag & Vert Manipulation
+<img width="24.4%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/b2f40fbe-862a-4581-b793-c5d4154215c4">
+<img width="24.4%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/fae496d4-4bbd-4aa1-8ee5-14ab82f716a4">
+<img width="24.4%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/eb210168-1e8b-4035-95dd-f1e1074c6664">
+<img width="24.4%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/7b9aee9f-086a-4207-8acd-e4742be0e9df">
 
-## Stage 7
+## Stage 8 Shadow Mapping & Ambient Occulusion
+If no images are present assume I stopped here & most likely will just jump into a gfx specialization because AO is mainly a pfx but shadow mapping is kinda important.
 
 ## Rasterizer Project Personal Notes
 #### All topics covered are below with bold stages being extremely important to understand
@@ -56,7 +67,10 @@ First 3 Using Line Sweep, Last using Barycentric Coordinates & Bounding Box Chec
 4. Wireframe Rendering - Connect the lines with the verticies on a obj file
 5. Old Line Sweep Algorithim - Triangle Rasterization Stage (Slow)
 6. ***Barycentric Coordinates - Triangle Rasterization Stage***
-7.
+7. ***Z Buffer Algorithim***/***Scan Line Rendering***, Painters Algorithim - Depth Buffer Stage
+8. Orthographic to ***Prespective Projection*** - Static Prespective Camera Stage
+9. ***Homogenous Coordinates & MVP (MODEL, VIEW, PROJECTION)*** - Moving Prespective Camera Stage
+10. ***OpenGL Shader Pipeline***
 
 
 # CPP2PPM Project
