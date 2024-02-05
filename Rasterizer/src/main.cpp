@@ -21,7 +21,7 @@ const int height = 1000;
 
 //Shader Stage
 Vec3f light_direction(1,1,1);
-Vec3f eye(0.5,1,3);
+Vec3f eye(1,1,3);
 Vec3f origin(0,0,0);
 Vec3f up(0,1,0);
 
@@ -109,7 +109,7 @@ struct Shader : public IShader {
         Vec4f sb_p = uniform_Mshadow*embed<4>(varying_tri*bar); // corresponding point in the shadow buffer
         sb_p = sb_p/sb_p[3];
         int idx = int(sb_p[0]) + int(sb_p[1])*width; // index in the shadowbuffer array
-        float shadow = .3+.7*(shadowbuffer[idx]<sb_p[2] + 50.); // magic coeff to avoid z-fighting
+        float shadow = .3+.7*(shadowbuffer[idx]<sb_p[2] + 43.); // magic coeff to avoid z-fighting
         Vec2f uv = varying_uv*bar;                 // interpolate uv for the current pixel
         Vec3f n = proj<3>(uniform_MIT*embed<4>(model->normal(uv))).normalize(); // normal
         Vec3f l = proj<3>(uniform_M  *embed<4>(light_direction        )).normalize(); // light vector
