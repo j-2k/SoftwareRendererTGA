@@ -53,7 +53,7 @@
 			[
 				{
 					"backtrace" : 2,
-					"header" : "/Users/dsg342/Desktop/ImagePPM/rasterizer/src/precompiledheaders.h"
+					"header" : "/Users/dsg342/Desktop/ImagePPM/Rasterizer/src/precompiledheaders.h"
 				}
 			],
 			"sourceIndexes" : 
@@ -76,7 +76,7 @@
 			[
 				{
 					"backtrace" : 2,
-					"header" : "/Users/dsg342/Desktop/ImagePPM/rasterizer/src/precompiledheaders.h"
+					"header" : "/Users/dsg342/Desktop/ImagePPM/Rasterizer/src/precompiledheaders.h"
 				}
 			],
 			"sourceIndexes" : 

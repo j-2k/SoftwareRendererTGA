@@ -100,16 +100,16 @@ struct JumaShader : public IShader {
     }
 
     virtual bool fragment(Vec3f bar, TGAColor &color) {
-        Vec2f uv = varying_uv*bar;
-        Vec3f normal = proj<3>(uniform_MIT*embed<4>(model->normal(uv))).normalize();
-        Vec3f light = proj<3>(uniform_M  *embed<4>(light_direction  )).normalize();     
-        Vec3f reflect =(normal*(normal*light*2.f) - light).normalize();
-        float spec = pow(std::max(reflect.z, 0.0f), model->specular(uv));
-        float diff = std::max(0.f, normal*light);       
+        Vec2f uv = varying_uv*bar;                 // interpolate uv for the current pixel
+        Vec3f n = proj<3>(uniform_MIT*embed<4>(model->normal(uv))).normalize();
+        Vec3f l = proj<3>(uniform_M  *embed<4>(light_direction        )).normalize();
+        Vec3f ref = (n*(n*l*2.f) - l).normalize();   // reflected light vector
+        float spec = pow(std::max(ref.z, 0.0f), model->specular(uv));
+        float diff = std::max(0.f, n*l);
         TGAColor c = model->diffuse(uv);
-        color = c;    // well duh
-        //for (int i=0; i<3; i++) color[i] = std::min<float>(100 + abs(c[i]*(1.2*diff + .6*spec)), 255);
-        return false;           // no, we do not discard this pixel
+        color = c;
+        for (int i=0; i<3; i++) color[i] = std::min<float>(5 + c[i]*(diff + .6*spec), 255);
+        return false;
     }
 };
 
@@ -321,6 +321,10 @@ int main(int argc, char** argv)
     TGAImage zbuffer(width, height, TGAImage::GRAYSCALE);
 
     JumaShader shader;
+
+    shader.uniform_M   =  Projection*ModelView;
+    shader.uniform_MIT = (Projection*ModelView).invert_transpose();
+    
     for (int i=0; i<model->nfaces(); i++) {
         Vec4f screen_coords[3];
         for (int j=0; j<3; j++) {
