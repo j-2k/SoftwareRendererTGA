@@ -55,8 +55,14 @@ First 3 Using Line Sweep, Last using Barycentric Coordinates & Bounding Box Chec
 <img width="24.4%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/eb210168-1e8b-4035-95dd-f1e1074c6664">
 <img width="24.4%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/7b9aee9f-086a-4207-8acd-e4742be0e9df">
 
-## Stage 8 Shadow Mapping & Ambient Occulusion
-If no images are present assume I stopped here & most likely will just jump into a gfx specialization because AO is mainly a pfx but shadow mapping is kinda important.
+## Stage 8 Phong Lighting / Normal & Specular Map Integration.
+Phong Lighting Desc
+
+## Stage 9 Shadow Mapping
+Shadow Mapping Desc  (double pass)
+
+## Stage 10 Ambient Occulusion
+If no images are present assume I stopped here & most likely will just jump into a gfx specialization because AO is mainly a pfx.
 
 ## Rasterizer Project Personal Notes
 #### All topics covered are below with bold stages being extremely important to understand
