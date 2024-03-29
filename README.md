@@ -56,10 +56,13 @@ First 3 Using Line Sweep, Last using Barycentric Coordinates & Bounding Box Chec
 <img width="24.4%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/7b9aee9f-086a-4207-8acd-e4742be0e9df">
 
 ## Stage 8 Phong Lighting / Normal & Specular Map Integration.
-Phong Lighting Desc
+*Albedo > Normal > Specular*  
+<img width="32.5%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/01d584be-863b-4c67-943b-1719395d0878">
+<img width="32.5%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/01d584be-863b-4c67-943b-1719395d0878">
+<img width="32.5%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/01d584be-863b-4c67-943b-1719395d0878">
 
 ## Stage 9 Shadow Mapping
-Shadow Mapping Desc  (double pass)
+*Shadow Mapping (double pass) & Z Fighting > Fixed Shadow*  
 
 ## Stage 10 Ambient Occulusion
 If no images are present assume I stopped here & most likely will just jump into a gfx specialization because AO is mainly a pfx.
