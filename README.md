@@ -58,8 +58,8 @@ First 3 Using Line Sweep, Last using Barycentric Coordinates & Bounding Box Chec
 ## Stage 8 Phong Lighting / Normal & Specular Map Integration.
 *Albedo > Normal > Specular*  
 <img width="32.5%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/01d584be-863b-4c67-943b-1719395d0878">
-<img width="32.5%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/01d584be-863b-4c67-943b-1719395d0878">
-<img width="32.5%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/01d584be-863b-4c67-943b-1719395d0878">
+<img width="32.5%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/34d71fae-c05d-4342-9431-207b05d8c6e5">
+<img width="32.5%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/6156da71-2523-452b-942b-969504d64f4c">
 
 ## Stage 9 Shadow Mapping
 *Shadow Mapping (double pass) & Z Fighting > Fixed Shadow*  
