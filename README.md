@@ -64,6 +64,10 @@ First 3 Using Line Sweep, Last using Barycentric Coordinates & Bounding Box Chec
 ## Stage 9 Shadow Mapping
 *Shadow Mapping (double pass) & Z Fighting > Fixed Shadow*  
 <img width="49%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/a3399585-0d3f-498a-8a0d-6d306fb64384">
+<img width="49%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/540a9da1-b1d6-46e5-88fd-8da2f1d55248">
+*Didn't fix the z-fighting below*  
+<img width="49%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/fd0c3107-09c8-4868-a324-c8bab9a9ec62">
+<img width="49%" src="https://github.com/j-2k/SoftwareRendererTGA/assets/52252068/1b6e823e-c7b1-454c-997e-abb18d4f7c23">
 
 ## Stage 10 Ambient Occulusion
 If no images are present assume I stopped here & most likely will just jump into a gfx specialization because AO is mainly a pfx.
